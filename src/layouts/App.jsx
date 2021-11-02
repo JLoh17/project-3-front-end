@@ -6,7 +6,7 @@ import ProductIndex from '@/pages/ProductIndex'
 import ProductShow from '@/pages/ProductShow'
 import MyCart from '@/pages/my/Cart'
 import MyProfile from '@/pages/my/Profile'
-import MyAdminOrders from '@/pages/my/AdminOrders'
+import MyAdminOrders from '@/pages/admin/AdminOrders'
 import MyOrdersShow from '@/pages/my/OrdersShow'
 import MyOrdersIndex from '@/pages/my/OrdersIndex'
 import PagesNotFound from '@/pages/NotFound'
@@ -21,7 +21,7 @@ const App = () => (
       <Route exact path="/ProductShow" component={ProductShow} />
       <Route exact path="/my/Cart" component={MyCart} />
       <Route exact path="/my/Profile" component={MyProfile} />
-      <Route exact path="/my/AdminOrders" component={MyAdminOrders} />
+      <Route exact path="/admin/AdminOrders" component={MyAdminOrders} />
       <Route exact path="/my/OrdersShow" component={MyOrdersShow} />
       <Route exact path="/my/OrdersIndex" component={MyOrdersIndex} />
       <Route component={PagesNotFound} />
