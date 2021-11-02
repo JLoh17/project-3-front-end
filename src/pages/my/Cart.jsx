@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import ActiveLastBreadcrumb from '@/components/Breadcrumb'
 
 const MyCart = () => (
-  <div id="product-index" className="container">
-    <header className="text-center border-bottom">
-      <h1>My Cart</h1>
-      <div><Link to="/">Home Page</Link></div>
-      <div><Link to="/ProductIndex">Product Index</Link></div>
-      <div><Link to="/my/OrdersShow">My Orders Show</Link></div>
-
-    </header>
-  </div>
+  <>
+    <ActiveLastBreadcrumb />
+    <div id="my-cart" className="container">
+      <header className="text-center border-bottom">
+        <h1>MY CART</h1>
+        <div>Your shopping cart is currently empty.</div>
+        <div><Link to="/ProductIndex">View Products</Link></div>
+      </header>
+    </div>
+  </>
 )
 
 export default MyCart
