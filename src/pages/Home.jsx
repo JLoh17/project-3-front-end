@@ -44,7 +44,7 @@ const PagesHome = () => (
       </CardGroup>
     </div>
 
-    <div>
+    <div className="border-top p-3">
       <h5>Come Find Us</h5>
       <p> 8/F, Cheung Hing Industrial Building, Kennedy Town, HK</p>
       <h5>Follow Us</h5>
