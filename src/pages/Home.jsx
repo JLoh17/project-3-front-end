@@ -22,7 +22,7 @@ const PagesHome = () => (
         {/* FOR LATER!! put the onClick on the Card itself */}
         <Card>
           <Button variant="light" className="button shadow-none">
-            <Card.Img variant="top" className="cardImage" src="https://www.intimissimi.com/dw/image/v2/BCXQ_PRD/on/demandware.static/-/Sites-INT_EC_COM/default/dw04872283/images/CMU12G_wear_800_M.jpg?sw=400&sfrm=png" />
+            <Card.Img variant="top" className="cardImage" src="https://lh6.googleusercontent.com/proxy/1nAjHXRxWfWps5_4GqAKH8lXNFLfZuXR1diKglvdK8JYNdb3V-UYAumwiX32sZxQVmLEIfCnbDuUCAWcGola0n0yc7meciJ1MJTMa54JaR8qZ_X48ufZT2rnM5nOaamAbVP5kVOeqw=s0-d" />
             <Card.Title className="text text-white">Men&apos;s Tops</Card.Title>
           </Button>
         </Card>
