@@ -10,10 +10,6 @@ const PagesHome = () => (
 
     <header className="text-center border-bottom my-3">
       <h1> Insert company name here</h1>
-      {/* <div><Link to="/ProductIndex">Product Index</Link></div>
-      <div><Link to="/my/Cart">My Cart</Link></div>
-      <div><Link to="/my/Profile">My Profile</Link></div>
-      <div><Link to="/my/AdminOrders">My Admin Orders</Link></div> */}
     </header>
 
     <div className="d-flex justify-content-around my-3">
