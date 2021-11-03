@@ -7,6 +7,8 @@ import ProductShow from '@/pages/ProductShow'
 
 import MyCart from '@/pages/my/Cart'
 import MyProfile from '@/pages/my/Profile'
+
+
 import MyOrdersShow from '@/pages/my/orders/show'
 import MyOrdersNew from '@/pages/my/orders/new'
 import MyOrdersIndex from '@/pages/my/orders/'
@@ -27,7 +29,7 @@ const App = () => (
       <Route exact path="/ProductShow" component={ProductShow} />
       <Route exact path="/my/Cart" component={MyCart} />
       <Route exact path="/my/Profile" component={MyProfile} />
-      <Route exact path="/my/AdminOrders" component={AdminOrders} />
+      <Route exact path="/admin/orders" component={AdminOrders} />
       <Route exact path="/my/OrdersShow" component={MyOrdersShow} />
       <Route exact path="/my/OrdersNew" component={MyOrdersNew} />
       <Route exact path="/my/Orders" component={MyOrdersIndex} />
