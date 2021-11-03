@@ -6,7 +6,7 @@ const MyOrdersShow = () => (
     <header className="text-center border-bottom">
       <h1>My Orders Show</h1>
       <div><Link to="/">Home Page</Link></div>
-      <div><Link to="/my/OrdersIndex">My Orders Index</Link></div>
+      <div><Link to="/my/Orders">My Orders Index</Link></div>
 
     </header>
   </div>

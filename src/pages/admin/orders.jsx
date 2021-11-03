@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const MyAdminOrders = () => (
+const AdminOrders = () => (
   <div id="admin-orders" className="container">
     <header className="text-center border-bottom">
       <h1>My Admin Orders</h1>
@@ -10,4 +10,4 @@ const MyAdminOrders = () => (
   </div>
 )
 
-export default MyAdminOrders
+export default AdminOrders

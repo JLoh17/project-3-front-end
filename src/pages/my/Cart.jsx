@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import ActiveLastBreadcrumb from '@/components/Breadcrumb'
 
 const MyCart = () => (
   <>
-    <ActiveLastBreadcrumb />
     <div id="my-cart" className="container">
       <header className="text-center border-bottom">
         <h1>MY CART</h1>
