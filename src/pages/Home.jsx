@@ -9,6 +9,7 @@ const PagesHome = () => (
       <div><Link to="/my/Cart">My Cart</Link></div>
       <div><Link to="/my/Profile">My Profile</Link></div>
       <div><Link to="/my/AdminOrders">My Admin Orders</Link></div>
+      <div><Link to="/my/Orders">My Orders</Link></div>
     </header>
   </div>
 )
