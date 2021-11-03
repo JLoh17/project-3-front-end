@@ -1,5 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from 'react-bootstrap/Card'
+
+import { getProductList } from '@/actions/product/index'
+
 import Loading from '@/components/Loading'
 
 const data = [
@@ -39,22 +43,18 @@ const data = [
 // need to add truncate to className so the title doesn't go too big
 // use map list out one by one, then use col-md-3 to restrict it to 4 columns; p-0 fills up the whole page
 class ProductIndex extends React.Component {
-  constructor(props) {
-    super(props)
+  // constructor(props) {
+  //   super(props)
 
-    this.state = {
-    }
+  //   this.state = {
+  //   }
 
-    this.productShow = this.productShow.bind(this)
-  }
-
-  // componentDidMount() {
-  //   this.props.getMyTodos()
+  //   this.productShow = this.productShow.bind(this)
   // }
 
-  productShow() {
-    // this.props
-  }
+  // componentDidMount() {
+  //   this.props.getProductList()
+  // }
 
   renderIndex() {
     return (
@@ -88,6 +88,10 @@ class ProductIndex extends React.Component {
       </div>
     )
   }
+}
+
+ProductIndex.propTypes = {
+  getProductList: PropTypes.func.isRequired
 }
 
 export default ProductIndex
