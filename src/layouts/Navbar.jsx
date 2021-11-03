@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router'
 import { NavLink } from 'react-router-dom'
-import { Navbar, Nav, Form, Button, FormControl, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav, Form, Button, FormControl, NavDropdown, OverlayTrigger } from 'react-bootstrap'
 // import NavDropdown from 'react-bootstrap/NavDropdown'
 // import Navbar from 'react-bootstrap/Navbar'
 // import Nav from 'react-bootstrap/Nav'
@@ -11,8 +11,9 @@ import { Navbar, Nav, Form, Button, FormControl, NavDropdown } from 'react-boots
 // import FormControl from 'react-bootstrap/FormControl'
 import { connect } from 'react-redux'
 
-import { authSignup, authLogout } from '@/actions/auth'
+import { authLogin, authSignup, authLogout } from '@/actions/auth'
 import ModalsRegister from '@/modals/register'
+import LoginPopover from '@/components/LoginPopup'
 
 class LayoutsNavbar extends React.Component {
   constructor(props) {
@@ -33,6 +34,19 @@ class LayoutsNavbar extends React.Component {
       this.closeRegisterModal()
     })
   }
+
+  handleLoginSubmit(values) {
+    this.props.authLogin(values).then(() => {
+      const { history: { push } } = this.props
+      push('/products')
+    })
+  }
+
+  // handleLoginClick() {
+  //   <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
+  //     <Button variant="success">Click me to see</Button>
+  //   </OverlayTrigger>
+  // }
 
   handleLogoutClick() {
     this.props.authLogout()
@@ -89,9 +103,9 @@ class LayoutsNavbar extends React.Component {
                       <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                       <Button variant="outline-success">Search</Button>
                     </Form>
-                    <Nav.Link onClick={this.handleLoginClick} eventKey="2">
-                      <span className="fas fa-user-check" />Login
-                    </Nav.Link>
+                    <OverlayTrigger alignRight trigger="click" placement="top" overlay={LoginPopover} eventKey="2">
+                      <span className="fas fa-user-check">Login</span>
+                    </OverlayTrigger>
                   </>
                 )
               }
@@ -107,7 +121,9 @@ class LayoutsNavbar extends React.Component {
 LayoutsNavbar.propTypes = {
   currentUserState: PropTypes.shape().isRequired,
   authLogout: PropTypes.func.isRequired,
-  authSignup: PropTypes.func.isRequired
+  authSignup: PropTypes.func.isRequired,
+  authLogin: PropTypes.func.isRequired,
+  history: PropTypes.shape().isRequired
 
 }
 
@@ -117,7 +133,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   authLogout,
-  authSignup
+  authSignup,
+  authLogin
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LayoutsNavbar))
