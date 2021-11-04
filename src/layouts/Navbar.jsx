@@ -2,18 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router'
 import { NavLink } from 'react-router-dom'
-import { Navbar, Nav, Form, Button, FormControl, NavDropdown, OverlayTrigger } from 'react-bootstrap'
-// import NavDropdown from 'react-bootstrap/NavDropdown'
-// import Navbar from 'react-bootstrap/Navbar'
-// import Nav from 'react-bootstrap/Nav'
-// import Form from 'react-bootstrap/Form'
-// import Button from 'react-bootstrap/Button'
-// import FormControl from 'react-bootstrap/FormControl'
+import { Navbar, Nav, Form, Button, FormControl, NavDropdown } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 import { authLogin, authSignup, authLogout } from '@/actions/auth'
 import ModalsRegister from '@/modals/register'
-import LoginPopover from '@/components/LoginPopup'
+import LoginPopover from '@/components/LoginPopover'
 
 class LayoutsNavbar extends React.Component {
   constructor(props) {
@@ -21,9 +15,11 @@ class LayoutsNavbar extends React.Component {
 
     this.state = {
       showRegisterModal: false
+      // displayPopover: true
     }
 
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
+    // this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
     this.handleLogoutClick = this.handleLogoutClick.bind(this)
     this.handleRegisterClick = this.handleRegisterClick.bind(this)
     this.closeRegisterModal = this.closeRegisterModal.bind(this)
@@ -35,17 +31,21 @@ class LayoutsNavbar extends React.Component {
     })
   }
 
-  handleLoginSubmit(values) {
-    this.props.authLogin(values).then(() => {
-      const { history: { push } } = this.props
-      push('/products')
-    })
-  }
+  // handleLoginSubmit(values) {
+  //   this.props.authLogin(values).then(() => {
+  //     const { history: { push } } = this.props
+  //     push('/products')
+  //   })
+  // }
 
   // handleLoginClick() {
   //   <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
   //     <Button variant="success">Click me to see</Button>
   //   </OverlayTrigger>
+  // }
+
+  // handlePopoverClose = () => {
+  //   this.setState({ displayPopover: false })
   // }
 
   handleLogoutClick() {
@@ -78,19 +78,21 @@ class LayoutsNavbar extends React.Component {
             {
                 currentUser ? (
                   <>
-                    <Form inline>
-                      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                      <Button variant="outline-success">Search</Button>
-                    </Form>
-                    <NavDropdown alignRight title={<span><i className="fas fa-user-check" />My Profile</span>}>
-                      <NavDropdown.Item as={NavLink} to="/api/my/profile">Edit My Profile</NavDropdown.Item>
-                      <NavDropdown.Item as={NavLink} to="/api/my/orders">My Order History</NavDropdown.Item>
-                      <NavDropdown.Divider />
-                      <NavDropdown.Item onClick={this.handleLogoutClick} eventKey="4">Logout</NavDropdown.Item>
-                    </NavDropdown>
-                    <Nav.Link as={NavLink} to="/api/my/cart" eventKey="3">
-                      <span className="fas fa-shopping-cart" />My Cart
-                    </Nav.Link>
+                    <Nav className="ml-auto">
+                      <Form inline>
+                        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                        <Button variant="outline-success">Search</Button>
+                      </Form>
+                      <NavDropdown alignRight title={<span><i className="fas fa-user-check" />My Profile</span>}>
+                        <NavDropdown.Item as={NavLink} to="/api/my/profile">Edit My Profile</NavDropdown.Item>
+                        <NavDropdown.Item as={NavLink} to="/api/my/orders">My Order History</NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item onClick={this.handleLogoutClick} eventKey="4">Logout</NavDropdown.Item>
+                      </NavDropdown>
+                      <Nav.Link as={NavLink} to="/api/my/cart" eventKey="3">
+                        <span className="fas fa-shopping-cart" />My Cart
+                      </Nav.Link>
+                    </Nav>
                   </>
                 ) : (
                   <>
@@ -98,14 +100,19 @@ class LayoutsNavbar extends React.Component {
                       <Nav.Link onClick={this.handleRegisterClick} eventKey="1">
                         <span className="fas fa-user-plus me-1" />Register
                       </Nav.Link>
+
                     </Nav>
                     <Form inline>
                       <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                       <Button variant="outline-success">Search</Button>
                     </Form>
-                    <OverlayTrigger alignRight trigger="click" placement="top" overlay={LoginPopover} eventKey="2">
-                      <span className="fas fa-user-check">Login</span>
-                    </OverlayTrigger>
+                    <Nav>
+                      <LoginPopover>
+                        <Nav.Link eventKey="2">
+                          <span className="fas fa-user-check">Login</span>
+                        </Nav.Link>
+                      </LoginPopover>
+                    </Nav>
                   </>
                 )
               }
@@ -121,9 +128,7 @@ class LayoutsNavbar extends React.Component {
 LayoutsNavbar.propTypes = {
   currentUserState: PropTypes.shape().isRequired,
   authLogout: PropTypes.func.isRequired,
-  authSignup: PropTypes.func.isRequired,
-  authLogin: PropTypes.func.isRequired,
-  history: PropTypes.shape().isRequired
+  authSignup: PropTypes.func.isRequired
 
 }
 
