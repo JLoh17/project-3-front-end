@@ -1,18 +1,21 @@
-// import axios from 'axios'
+import axios from 'axios'
 
-// import { loading } from '@/actions/loading'
+import { loading } from '@/actions/loading'
 
-// // export const DDDD = 'DDDD'
-// // export const CCCC = (payload) => ({ type: DDDD, payload })
-// export const GET_PRODUCTLIST = 'GET_PRODUCTLIST' // when sending a payload, need to to be a string
-// export const getProductList = () => (dispatch) => {
-//   dispatch(loading(GET_PRODUCTLIST, { loading: true }))
-//   axios({
-//     method: 'GET',
-//     url: 'https://localhost:3000/products'
-//   // }).then((resp) => {
-//   //   dispatch(CCCC(resp.data))
-//   }).finally(() => {
-//     dispatch(loading(GET_PRODUCTLIST, { loading: false }))
-//   })
-// }
+export const SET_PRODUCTLIST = 'SET_PRODUCTLIST'
+export const setProductList = (payload) => ({ type: SET_PRODUCTLIST, payload })
+
+// Need to do get to set loading, then dispatch the data in setProductList to store data in the reducer, then dispatch to unset the loading as false
+// Connect in pages is needed for dispatch to work
+export const GET_PRODUCTLIST = 'GET_PRODUCTLIST'
+export const getProductList = () => (dispatch) => {
+  dispatch(loading(GET_PRODUCTLIST, { loading: true }))
+  axios({
+    method: 'GET',
+    url: 'http://localhost:3000/api/products'
+  }).then((resp) => {
+    dispatch(setProductList(resp.data))
+  }).finally(() => {
+    dispatch(loading(GET_PRODUCTLIST, { loading: false }))
+  })
+}
