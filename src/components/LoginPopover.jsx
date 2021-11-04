@@ -19,9 +19,9 @@ const LoginPopover = ({ children, ...props }) => {
     <OverlayTrigger
       trigger="click"
       placement="bottom"
-      show={show}
+      // show={show}
       onToggle={() => {
-        setShow(true)
+        setShow(!show)
       }}
       overlay={(
         <Popover>

@@ -84,12 +84,12 @@ class LayoutsNavbar extends React.Component {
                         <Button variant="outline-success">Search</Button>
                       </Form>
                       <NavDropdown alignRight title={<span><i className="fas fa-user-check" />My Profile</span>}>
-                        <NavDropdown.Item as={NavLink} to="/api/my/profile">Edit My Profile</NavDropdown.Item>
-                        <NavDropdown.Item as={NavLink} to="/api/my/orders">My Order History</NavDropdown.Item>
+                        <NavDropdown.Item as={NavLink} to="/my/profile">Edit My Profile</NavDropdown.Item>
+                        <NavDropdown.Item as={NavLink} to="/my/orders">My Order History</NavDropdown.Item>
                         <NavDropdown.Divider />
                         <NavDropdown.Item onClick={this.handleLogoutClick} eventKey="4">Logout</NavDropdown.Item>
                       </NavDropdown>
-                      <Nav.Link as={NavLink} to="/api/my/cart" eventKey="3">
+                      <Nav.Link as={NavLink} to="/my/cart" eventKey="3">
                         <span className="fas fa-shopping-cart" />My Cart
                       </Nav.Link>
                     </Nav>
