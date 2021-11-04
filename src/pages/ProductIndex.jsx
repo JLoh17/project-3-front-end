@@ -46,6 +46,7 @@ class ProductIndex extends React.Component {
             </Card>
           ))
         }
+
       </div>
     )
   }
