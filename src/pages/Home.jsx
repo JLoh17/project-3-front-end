@@ -2,6 +2,9 @@ import React from 'react'
 import Card from 'react-bootstrap/Card'
 import CardGroup from 'react-bootstrap/CardGroup'
 import Button from 'react-bootstrap/Button'
+
+import Footer from '@/components/Footer'
+
 import { Form } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -21,7 +24,6 @@ const categories = [
     src: 'https://i.pinimg.com/736x/04/b3/3f/04b33f8059ce671b3569b7c4bb28f7a3--men-hats-fedora-mens-hats.jpg'
   }
 ]
-
 
 class PagesHome extends React.Component {
   constructor(props) {
@@ -61,29 +63,7 @@ class PagesHome extends React.Component {
               }
             </CardGroup>
           </div>
-
-          <div>
-            <h5>Come Find Us</h5>
-            <p> 8/F, Cheung Hing Industrial Building, Kennedy Town, HK</p>
-            <h5>Follow Us</h5>
-
-            <div id="logo" className="mb-1 p-0">
-              <span className="fab fa-facebook-square " />
-              <span className="fab fa-instagram-square" />
-            </div>
-
-            <h5>Subscribe to our news letter</h5>
-            <Form className="form-inline ms-0 mb-3">
-              <Form.Group controlId="formBasicEmail">
-                <div>
-                  <Form.Control type="email" placeholder="Enter email" />
-                  <Button variant="info" disabled>
-                    Subscribe
-                  </Button>
-                </div>
-              </Form.Group>
-            </Form>
-          </div>
+        <Footer />
         </div>
       </>
     )
@@ -146,5 +126,6 @@ export default connect(null, mapDispatchToProps)(PagesHome)
 //     </div>
 //   </div>
 // )
+
 
 // export default PagesHome

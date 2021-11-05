@@ -6,6 +6,8 @@ import { connect } from 'react-redux'
 import { getProductShow } from '@/actions/product/show'
 
 import CompCarousel from '@/components/Carousel'
+import Footer from '@/components/Footer'
+
 import CompProductSelector from '@/components/ProductSelector'
 import CompLoading from '@/components/Loading'
 
@@ -38,6 +40,7 @@ const ProductShow = (props) => {
         <CompCarousel images={product.Images} />
         <CompProductSelector product={product} />
       </div>
+      <Footer />
     </div>
   )
 }
