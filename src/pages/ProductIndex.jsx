@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Card from 'react-bootstrap/Card'
 import { connect } from 'react-redux'
+import Skeleton from 'react-loading-skeleton'
 
 import { getProductList } from '@/actions/product/index'
 
@@ -27,22 +28,43 @@ class ProductIndex extends React.Component {
     this.props.getProductList(this.state)
   }
 
-  getFilteredProductsNext(page) {
-    this.props.getProductList({ ...this.state, page })
-    this.setState(page + 1)
+  getFilteredProductsNext(newPage) {
+    this.props.getProductList({ ...this.state, page: newPage })
+    this.setState({ page: newPage })
   }
 
-  getFilteredProductsPrevious(page) {
-    this.props.getProductList({ ...this.state, page })
-    this.setState(page - 1)
+  getFilteredProductsPrevious(newPage) {
+    this.props.getProductList({ ...this.state, page: newPage })
+    this.setState({ page: newPage })
   }
 
   renderIndex() {
-    const { productIndex: { list }, history: { push } } = this.props
+    const { productIndex: { list, meta, isLoading }, history: { push } } = this.props
+    const { page } = this.state
+
+    if (isLoading) {
+      const temp = Array.from(Array(12).keys())
+
+      return (
+        <div className="row mb-3">
+          {
+            temp.map((t) => (
+              <Card key={t} className="col-6 col-md-3 p-0">
+                <Skeleton className="card-img-top" />
+                <Card.Body>
+                  <Skeleton count={2} />
+                </Card.Body>
+              </Card>
+            ))
+          }
+        </div>
+      )
+    }
 
     return (
-      <div className="row">
-        {
+      <>
+        <div className="row mb-3">
+          {
           list.map((product) => (
             <Card
               key={product.id}
@@ -60,20 +82,23 @@ class ProductIndex extends React.Component {
             </Card>
           ))
         }
-        {/* If page === 1, show Next,
-        Else if === (page.length-1), show previous
-        Else show Next+Previous */}
-        <div className="button-spacing mx-auto my-3">
-          <button type="button" className="btn btn-info" onClick={this.getFilteredProductsPrevious}>Previous</button>
-          <button type="button" className="btn btn-info" onClick={this.getFilteredProductsNext}>Next</button>
         </div>
-      </div>
+
+        <div className="d-flex justify-content-center">
+          {
+            page > 1 && <button type="button" className="btn btn-info btn-spacing" onClick={() => this.getFilteredProductsPrevious(page - 1)}>Previous</button>
+          }
+          {
+            page < meta?.totalPages && <button type="button" className="btn btn-info" onClick={() => this.getFilteredProductsNext(page + 1)}>Next</button>
+          }
+        </div>
+      </>
     )
   }
 
   render() {
     return (
-      <div id="product-index" className="container">
+      <div id="product-index" className="container my-3">
         <header className="text-center mb-3">
           <h1>Category</h1>
         </header>
