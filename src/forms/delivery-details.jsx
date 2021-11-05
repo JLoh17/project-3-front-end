@@ -47,7 +47,6 @@ const DeliveryDetails = () => {
       telephone: '',
       address: '',
       defaultAddress: false
-
     },
     validate,
     onSubmit: (values) => {

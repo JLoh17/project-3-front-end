@@ -1,12 +1,8 @@
 // App.js
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Slider from 'react-slick'
-import '../styles/CompsCarousel.scss'
 
-// import React from 'react'
-// import Slider from 'react-slick'
-// import { baseUrl } from './config'
-
+/* eslint-disable */
 class CompsCarousel extends React.Component {
   render() {
     const settings = {
@@ -24,6 +20,7 @@ class CompsCarousel extends React.Component {
       slidesToShow: 1,
       slidesToScroll: 1
     }
+
     return (
       <div className="productCarouselSelected">
         <Slider {...settings}>
@@ -45,6 +42,7 @@ class CompsCarousel extends React.Component {
   }
 }
 export default CompsCarousel
+/* eslint-enable */
 
 // function CompCarousel() {
 //   const [nav1, setNav1] = useState(null)
