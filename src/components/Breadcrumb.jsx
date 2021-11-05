@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { Breadcrumbs as MUIBreadcrumbs, Typography, Link as MLink } from '@mui/material'
 
@@ -30,8 +31,12 @@ const Breadcrumb = (props) => {
 
       </MUIBreadcrumbs>
     </div>
-
   )
+}
+
+Breadcrumb.propTypes = {
+  history: PropTypes.shape().isRequired,
+  location: PropTypes.shape().isRequired
 }
 
 export default withRouter(Breadcrumb)

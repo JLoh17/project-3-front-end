@@ -50,5 +50,5 @@ LoginPopover.propTypes = {
 const mapDispatchToProps = {
   authLogin
 }
-//
+
 export default connect(null, mapDispatchToProps)(LoginPopover)

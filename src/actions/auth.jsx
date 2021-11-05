@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { setCurrentUser, unsetCurrentUser } from '@/actions/my/Profile'
+import { setCurrentUser, unsetCurrentUser } from '@/actions/my/profile'
 
 export const authSignup = (values) => (dispatch) => new Promise((resolve, reject) => {
   axios({
