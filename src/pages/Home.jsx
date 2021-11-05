@@ -33,7 +33,7 @@ const PagesHome = () => (
           /* FOR LATER!! put the onClick on the Card itself */
           categories.map((cat) => (
             <Card key={cat.id}>
-              <Button variant="light" className="button shadow-none">
+              <Button variant="light" className="button shadow-none" data-cat={cat.name}>
                 <Card.Img variant="top" className="cardImage" src={cat.src} />
                 <Card.Title className="text text-white">{cat.name}</Card.Title>
               </Button>
