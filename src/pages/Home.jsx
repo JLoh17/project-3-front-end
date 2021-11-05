@@ -63,8 +63,8 @@ class PagesHome extends React.Component {
               }
             </CardGroup>
           </div>
-        <Footer />
         </div>
+        <Footer />
       </>
     )
   }
@@ -126,6 +126,5 @@ export default connect(null, mapDispatchToProps)(PagesHome)
 //     </div>
 //   </div>
 // )
-
 
 // export default PagesHome
