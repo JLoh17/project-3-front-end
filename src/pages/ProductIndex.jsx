@@ -105,10 +105,11 @@ class ProductIndex extends React.Component {
   }
 
   render() {
+    // const { productIndex: { list, product } = this.props
     return (
       <div id="product-index" className="container my-3">
         <header className="text-center mb-3">
-          <h1>Category</h1>
+          <h1>category</h1>
         </header>
 
         { this.renderIndex()}

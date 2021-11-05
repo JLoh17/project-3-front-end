@@ -32,9 +32,9 @@ class PagesHome extends React.Component {
     this.getCategoryByFilter = this.getCategoryByFilter.bind(this)
   }
 
-  getCategoryByFilter(catName) {
-    const { history: { push } } = this.props
-    push(`/products?catName=${catName}`)
+  getCategoryByFilter(catId) { // this is referring to the getCategoryByFilter under <Card>
+    const { history: { push } } = this.props // redirects to the push on the line below
+    push(`/products?catName=${catId}`)
   }
 
   render() {
