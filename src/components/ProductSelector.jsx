@@ -1,14 +1,18 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Card, ListGroup, ListGroupItem, Button } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 
-const CompProductSelector = () => (
+const CompProductSelector = ({ product }) => (
   <>
     <Card style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title as="h3">Italia Arpino</Card.Title>
+        <Card.Title as="h3">{product.productName}</Card.Title>
         <ListGroup className="list-group-flush">
-          <ListGroupItem as="h3">$600</ListGroupItem>
+          <ListGroupItem as="h3">{product.price.toLocaleString('en-HK', {
+            style: 'currency',
+            currency: 'HKD'
+          })}</ListGroupItem>
           <ListGroupItem as="h5">
             <Form>
               <Form.Label as="h5">Size</Form.Label>
@@ -35,11 +39,16 @@ const CompProductSelector = () => (
         </Card.Text>
 
         <Card.Text>
-          The Arpino features a herringbone pattern with a windowpane overlay, in rich autumn colors. Fully lined, the Arpino is comfortable and warm, perfect for cooler weather. Top off casual attire with the Italia Arpino, for a sophisticated “town and country” look.
+          {product.description}
         </Card.Text>
       </Card.Body>
     </Card>
   </>
 )
+
+CompProductSelector.propTypes = {
+  product: PropTypes.shape().isRequired
+
+}
 
 export default CompProductSelector

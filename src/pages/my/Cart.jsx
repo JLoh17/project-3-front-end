@@ -6,7 +6,7 @@ const MyCart = () => (
     <header className="text-center border-bottom">
       <h1>MY CART</h1>
       <div>Your shopping cart is currently empty.</div>
-      <div><Link to="/ProductIndex">View Products</Link></div>
+      <div><Link to="/products">View Products</Link></div>
     </header>
   </div>
 )

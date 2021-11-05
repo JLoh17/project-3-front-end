@@ -14,25 +14,17 @@ class ProductIndex extends React.Component {
     super(props)
 
     this.state = {
-      page: 1,
-      q: '',
-      sort: 'createdAt'
     }
 
-    this.getFilteredProducts = this.getFilteredProducts.bind(this)
+    // this.productShow = this.productShow.bind(this)
   }
 
   componentDidMount() {
-    this.props.getProductList(this.state)
-  }
-
-  getFilteredProducts(page) {
-    this.props.getProductList({ ...this.state, page })
-    this.setState({ page })
+    this.props.getProductList()
   }
 
   renderIndex() {
-    const { productIndex: { list }, history: { push } } = this.props
+    const { productIndex: { list } } = this.props
 
     return (
       <div className="row">
@@ -41,7 +33,7 @@ class ProductIndex extends React.Component {
             <Card
               key={product.id}
               className="col-6 col-md-3 p-0"
-              onClick={() => push('/')}
+              onClick={this.productShow}
             >
               <Card.Img variant="top" src={product.Images?.[0]?.imageURL} />
               <Card.Body>
@@ -54,6 +46,7 @@ class ProductIndex extends React.Component {
             </Card>
           ))
         }
+
       </div>
     )
   }
@@ -64,7 +57,6 @@ class ProductIndex extends React.Component {
         <header className="text-center mb-3">
           <h1>Category</h1>
         </header>
-
         { this.renderIndex()}
       </div>
     )
@@ -73,8 +65,7 @@ class ProductIndex extends React.Component {
 
 ProductIndex.propTypes = {
   getProductList: PropTypes.func.isRequired,
-  productIndex: PropTypes.func.isRequired,
-  history: PropTypes.shape().isRequired
+  productIndex: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
