@@ -5,4 +5,12 @@
     height: 40vh;
     object-fit: cover;
   }
+
+  .card:hover {
+    cursor: pointer;
+  }
+
+  .btn-spacing {
+    margin-right: 2vw;
+  }
 }
