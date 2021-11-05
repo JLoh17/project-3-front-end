@@ -46,7 +46,6 @@ class ProductIndex extends React.Component {
             </Card>
           ))
         }
-
       </div>
     )
   }
@@ -57,6 +56,7 @@ class ProductIndex extends React.Component {
         <header className="text-center mb-3">
           <h1>Category</h1>
         </header>
+
         { this.renderIndex()}
       </div>
     )
