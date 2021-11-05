@@ -1,15 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import CompCarousel from '@/components/Carousel'
+import CompProductSelector from '@/components/ProductSelector'
 
 const ProductShow = () => (
   <div id="product-show" className="container">
     <header className="text-center border-bottom">
-      <h1>Product Show</h1>
-      <div><Link to="/ProductIndex">Product Index</Link></div>
+      <h3>Men's Hats</h3>
+      <div><Link to="/products">Back to Men's Hats</Link></div>
     </header>
+    <div className="d-flex flex-column d-sm-flex flex-sm-row">
 
-    <CompCarousel />
+      <CompCarousel />
+      <CompProductSelector />
+    </div>
   </div>
 )
 
