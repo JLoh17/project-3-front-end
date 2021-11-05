@@ -19,16 +19,22 @@ class ProductIndex extends React.Component {
       sort: 'createdAt'
     }
 
-    this.getFilteredProducts = this.getFilteredProducts.bind(this)
+    this.getFilteredProductsPrevious = this.getFilteredProductsPrevious.bind(this)
+    this.getFilteredProductsNext = this.getFilteredProductsNext.bind(this)
   }
 
   componentDidMount() {
     this.props.getProductList(this.state)
   }
 
-  getFilteredProducts(page) {
+  getFilteredProductsNext(page) {
     this.props.getProductList({ ...this.state, page })
-    this.setState({ page })
+    this.setState(page + 1)
+  }
+
+  getFilteredProductsPrevious(page) {
+    this.props.getProductList({ ...this.state, page })
+    this.setState(page - 1)
   }
 
   renderIndex() {
@@ -54,6 +60,13 @@ class ProductIndex extends React.Component {
             </Card>
           ))
         }
+        {/* If page === 1, show Next,
+        Else if === (page.length-1), show previous
+        Else show Next+Previous */}
+        <div className="button-spacing mx-auto my-3">
+          <button type="button" className="btn btn-info" onClick={this.getFilteredProductsPrevious}>Previous</button>
+          <button type="button" className="btn btn-info" onClick={this.getFilteredProductsNext}>Next</button>
+        </div>
       </div>
     )
   }
