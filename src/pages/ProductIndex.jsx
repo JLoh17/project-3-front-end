@@ -77,7 +77,7 @@ class ProductIndex extends React.Component {
             <Card
               key={product.id}
               className="col-6 col-md-3 p-0"
-              onClick={() => push('/')}
+              onClick={this.productShow}
             >
               <Card.Img variant="top" src={product.Images?.[0]?.imageURL} />
               <Card.Body>
@@ -90,6 +90,7 @@ class ProductIndex extends React.Component {
             </Card>
           ))
         }
+
         </div>
 
         <div className="d-flex justify-content-center">
@@ -111,7 +112,6 @@ class ProductIndex extends React.Component {
         <header className="text-center mb-3">
           <h1>category</h1>
         </header>
-
         { this.renderIndex()}
       </div>
     )

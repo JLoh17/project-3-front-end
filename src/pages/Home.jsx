@@ -22,6 +22,7 @@ const categories = [
   }
 ]
 
+
 class PagesHome extends React.Component {
   constructor(props) {
     super(props)

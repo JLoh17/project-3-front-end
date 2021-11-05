@@ -1,26 +1,54 @@
 import React from 'react'
-import { Card, ListGroup, ListGroupItem } from 'react-bootstrap'
+import PropTypes from 'prop-types'
+import { Card, ListGroup, ListGroupItem, Button } from 'react-bootstrap'
+import Form from 'react-bootstrap/Form'
 
-const CompsProductDescription = () => {
-  <Card style={{ width: '18rem' }}>
-    <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-    <Card.Body>
-      <Card.Title>Card Title</Card.Title>
-      <Card.Text>
-        Some quick example text to build on the card title and make up the bulk of
-        the card's content.
-      </Card.Text>
-    </Card.Body>
-    <ListGroup className="list-group-flush">
-      <ListGroupItem>Cras justo odio</ListGroupItem>
-      <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-      <ListGroupItem>Vestibulum at eros</ListGroupItem>
-    </ListGroup>
-    <Card.Body>
-      <Card.Link href="#">Card Link</Card.Link>
-      <Card.Link href="#">Another Link</Card.Link>
-    </Card.Body>
-  </Card>
+const CompProductSelector = ({ product }) => (
+  <>
+    <Card style={{ width: '18rem' }}>
+      <Card.Body>
+        <Card.Title as="h3">{product.productName}</Card.Title>
+        <ListGroup className="list-group-flush">
+          <ListGroupItem as="h3">{product.price.toLocaleString('en-HK', {
+            style: 'currency',
+            currency: 'HKD'
+          })}</ListGroupItem>
+          <ListGroupItem as="h5">
+            <Form>
+              <Form.Label as="h5">Size</Form.Label>
+              <Form.Control as="select" aria-label="size" name="size">
+                <option value="1">Small</option>
+                <option value="2">Medium</option>
+                <option value="3">Large</option>
+              </Form.Control>
+              <Form.Label as="h5" className="mt-2">Quantity</Form.Label>
+              <Form.Control as="select" aria-label="quantity" name="quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </Form.Control>
+            </Form>
+          </ListGroupItem>
+          <ListGroupItem />
+          <Button type="submit" variant="warning">Add to Cart</Button>
+          <ListGroupItem />
+
+        </ListGroup>
+        <Card.Text as="h5">
+          Description
+        </Card.Text>
+
+        <Card.Text>
+          {product.description}
+        </Card.Text>
+      </Card.Body>
+    </Card>
+  </>
+)
+
+CompProductSelector.propTypes = {
+  product: PropTypes.shape().isRequired
+
 }
 
-export default CompsProductDescription
+export default CompProductSelector

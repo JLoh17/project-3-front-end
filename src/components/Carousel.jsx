@@ -1,48 +1,45 @@
 // App.js
 import React from 'react'
+import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 
-/* eslint-disable */
-class CompsCarousel extends React.Component {
-  render() {
-    const settings = {
-      customPaging(i) {
-        return (
-          <a className="productImgThumbnail">
-            <img src={`https://www.hatsinthebelfry.com/media/amasty/webp/catalog/product/cache/7834fc1d76b8977f5ef381b2fc38fd7a/a/r/arpino0${i + 1}_jpg.webp`} />
-          </a>
-        )
-      },
-      dots: true,
-      dotsClass: 'slick-dots slick-thumb',
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1
-    }
-
-    return (
-      <div className="productCarouselSelected">
-        <Slider {...settings}>
-          <div>
-            <img className="productSelected" src="https://www.hatsinthebelfry.com/media/amasty/webp/catalog/product/cache/7834fc1d76b8977f5ef381b2fc38fd7a/a/r/arpino01_jpg.webp" />
-          </div>
-          <div>
-            <img className="productSelected" src="https://www.hatsinthebelfry.com/media/amasty/webp/catalog/product/cache/7834fc1d76b8977f5ef381b2fc38fd7a/a/r/arpino02_jpg.webp" />
-          </div>
-          <div>
-            <img className="productSelected" src="https://www.hatsinthebelfry.com/media/amasty/webp/catalog/product/cache/7834fc1d76b8977f5ef381b2fc38fd7a/a/r/arpino03_jpg.webp" />
-          </div>
-          <div>
-            <img className="productSelected" src="https://www.hatsinthebelfry.com/media/amasty/webp/catalog/product/cache/7834fc1d76b8977f5ef381b2fc38fd7a/a/r/arpino04_jpg.webp" />
-          </div>
-        </Slider>
-      </div>
-    )
+const CompsCarousel = ({ images }) => {
+  const settings = {
+    customPaging(i) {
+      return (
+        <a className="productImgThumbnail">
+          <img src={images[i].imageURL} />
+        </a>
+      )
+    },
+    dots: true,
+    dotsClass: 'slick-dots slick-thumb',
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
   }
+
+  return (
+    <div className="productCarouselSelected">
+      <Slider {...settings}>
+        {
+          images.map((image) => (
+            <div key={image.id}>
+              <img className="productSelected" src={image.imageURL} />
+            </div>
+          ))
+        }
+      </Slider>
+    </div>
+  )
 }
+
+CompsCarousel.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.shape()).isRequired
+}
+
 export default CompsCarousel
-/* eslint-enable */
 
 // function CompCarousel() {
 //   const [nav1, setNav1] = useState(null)
