@@ -14,10 +14,13 @@ class ProductIndex extends React.Component {
   constructor(props) {
     super(props)
 
+    const queries = new URLSearchParams(props.location.search)
+
     this.state = {
       page: 1,
       q: '',
-      sort: 'createdAt'
+      sort: 'createdAt',
+      category: queries.get('catName') || ''
     }
 
     this.getFilteredProductsPrevious = this.getFilteredProductsPrevious.bind(this)
@@ -26,6 +29,11 @@ class ProductIndex extends React.Component {
 
   componentDidMount() {
     this.props.getProductList(this.state)
+  }
+
+  getFilteredCategory(newCategory) {
+    this.props.getProductList(this.state)
+    this.setState({ category: newCategory })
   }
 
   getFilteredProductsNext(newPage) {
@@ -112,7 +120,8 @@ class ProductIndex extends React.Component {
 ProductIndex.propTypes = {
   getProductList: PropTypes.func.isRequired,
   productIndex: PropTypes.func.isRequired,
-  history: PropTypes.shape().isRequired
+  history: PropTypes.shape().isRequired,
+  location: PropTypes.shape().isRequired
 }
 
 const mapStateToProps = (state) => ({
