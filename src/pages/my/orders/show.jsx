@@ -7,7 +7,6 @@ const MyOrdersShow = () => (
       <h1>My Orders Show</h1>
       <div><Link to="/">Home Page</Link></div>
       <div><Link to="/my/Orders">My Orders Index</Link></div>
-
     </header>
   </div>
 )

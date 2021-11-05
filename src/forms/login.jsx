@@ -17,14 +17,14 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
     </div>
 
     <div className="form-group">
-      <label htmlFor="password">Password</label>
+      <label htmlFor="passwordHash">Password</label>
       <Field
-        id="password"
-        className={`form-control ${(errors.password && touched.password ? ' is-invalid' : '')}`}
-        name="password"
+        id="passwordHash"
+        className={`form-control ${(errors.passwordHash && touched.passwordHash ? ' is-invalid' : '')}`}
+        name="passwordHash"
         type="password"
       />
-      <ErrorMessage component="div" className="invalid-feedback" name="password" />
+      <ErrorMessage component="div" className="invalid-feedback" name="passwordHash" />
     </div>
 
     <button className="btn btn-success" type="submit" disabled={isSubmitting}>Login</button>
@@ -38,14 +38,14 @@ RenderForm.propTypes = {
 
 const authLoginSchema = yup.object().shape({
   email: yup.string().email().required('Required'),
-  password: yup.string().min(6).required('Required')
+  passwordHash: yup.string().min(6).required('Required')
 })
 
 const FormsAuthLogin = ({ onSubmit }) => (
   <Formik
     initialValues={{
       email: '',
-      password: ''
+      passwordHash: ''
     }}
     validationSchema={authLoginSchema}
     onSubmit={onSubmit}
