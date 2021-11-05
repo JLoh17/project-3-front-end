@@ -1,3 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
+@import '~slick-carousel/slick/slick';
+@import '~slick-carousel/slick/slick-theme';
+
 @import "./home.scss";
 @import "./productindex.scss";
+@import "./CompsCarousel.scss";
+
