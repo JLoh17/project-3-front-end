@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Card from 'react-bootstrap/Card'
 import { connect } from 'react-redux'
+import Footer from '@/components/Footer'
 
 import { getProductList } from '@/actions/product/index'
 
@@ -60,13 +61,16 @@ class ProductIndex extends React.Component {
 
   render() {
     return (
-      <div id="product-index" className="container">
-        <header className="text-center mb-3">
-          <h1>Category</h1>
-        </header>
+      <>
+        <div id="product-index" className="container">
+          <header className="text-center mb-3">
+            <h1>Category</h1>
+          </header>
 
-        { this.renderIndex()}
-      </div>
+          { this.renderIndex()}
+        </div>
+        <Footer />
+      </>
     )
   }
 }
