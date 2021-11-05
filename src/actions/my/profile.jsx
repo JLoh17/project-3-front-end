@@ -9,7 +9,7 @@ export const unsetCurrentUser = () => ({ type: UNSET_CURRENT_USER })
 export const getMyProfile = () => (dispatch) => new Promise((resolve, reject) => {
   axios({
     method: 'GET',
-    url: 'http://localhost:3000/api/my/profile',
+    url: `${process.env.API_DOMAIN}/api/my/profile`,
     withCredentials: true
   }).then((resp) => {
     dispatch(setCurrentUser(resp.data))

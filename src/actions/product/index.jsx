@@ -12,7 +12,7 @@ export const getProductList = (filter = {}) => (dispatch) => {
   dispatch(loading(GET_PRODUCTLIST, { loading: true }))
   axios({
     method: 'GET',
-    url: 'http://localhost:3000/api/products',
+    url: `${process.env.API_DOMAIN}/api/products`,
     params: filter
   }).then((resp) => {
     dispatch(setProductList(resp.data))
