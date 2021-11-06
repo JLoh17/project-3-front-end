@@ -21,7 +21,7 @@ const CartTable = () => (
       <tbody>
         <tr>
           <td>
-            <Image src="https://modone.com/eng_pl_Mens-shoes-T326-brown-14029_7.jpg" className="pic-resize" />
+            <Image src="https://i.pinimg.com/736x/4a/91/a6/4a91a6b4f09c7df99a6352db06f7a701.jpg" className="pic-resize" />
           </td>
           <td>ProductName</td>
           <td>$700</td>
