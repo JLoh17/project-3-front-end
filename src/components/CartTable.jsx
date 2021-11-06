@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form'
 const CartTable = () => (
   <div id="ComponentsCartTable" className="container">
 
-    <Table className="text-center mt-3">
+    <Table className="text-center mt-3" responsive="md">
       <thead>
         <tr>
           <th colSpan="2" />
