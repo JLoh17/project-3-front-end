@@ -1,0 +1,23 @@
+#ComponentsCartTable {
+  .pic-resize {
+    max-width: 25vw;
+    max-height: 25vh
+  }
+
+  .trashBtn {
+    color: red;
+  }
+
+  .trashBtn:hover {
+    cursor: pointer;
+  }
+
+  table th {
+    border-top: none;
+  }
+
+  table td {
+    vertical-align: middle;
+  }
+
+}
