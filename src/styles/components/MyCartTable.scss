@@ -4,14 +4,6 @@
     max-height: 30vh
   }
 
-  .trashBtn {
-    color: red;
-  }
-
-  .trashBtn:hover {
-    cursor: pointer;
-  }
-
   table th {
     border-top: none;
   }
@@ -20,4 +12,19 @@
     vertical-align: middle;
   }
 
+  .trashBtn {
+    color: red;
+  }
+
+  .trashBtn:hover {
+    cursor: pointer;
+  }
+
+  .submitButton {
+    border-bottom: none;
+  }
+
+  .border {
+    border-top: none;
+  }
 }

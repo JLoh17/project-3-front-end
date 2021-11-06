@@ -1,9 +1,12 @@
-// Components - Cart Table
-
 import React from 'react'
 import Table from 'react-bootstrap/Table'
 import Image from 'react-bootstrap/Image'
 import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 const CartTable = () => (
   <div id="ComponentsCartTable" className="container">
@@ -41,6 +44,7 @@ const CartTable = () => (
             <div className="fas fa-trash-alt trashBtn"> Remove</div>
           </td>
         </tr>
+
       </tbody>
 
       <tbody>
@@ -52,11 +56,71 @@ const CartTable = () => (
           <td>
             <h4>$100.00</h4>
           </td>
+          <td>
+            <Button variant="success"> Next Step </Button>
+          </td>
         </tr>
       </tbody>
 
     </Table>
   </div>
+
+  // Grid version
+  // <div id="ComponentsCartTable" className="container">
+
+  //   <Container className="mt-3 text-center">
+  //     <Row>
+  //       <Col />
+  //       <Col />
+  //       <Col>
+  //         <h4>Unit Cost</h4>
+  //       </Col>
+  //       <Col>
+  //         <h4>Quantity</h4>
+  //       </Col>
+  //       <Col>
+  //         <h4>Subtotal</h4>
+  //       </Col>
+  //       <Col />
+  //     </Row>
+  //     <Row className="d-flex align-items-center my-2">
+  //       <Col>
+  //         <Image src="https://i.pinimg.com/736x/4a/91/a6/4a91a6b4f09c7df99a6352db06f7a701.jpg" className="pic-resize" />
+  //       </Col>
+  //       <Col>ProductName</Col>
+  //       <Col>$700</Col>
+  //       <Col>
+  //         <Form>
+  //           <Form.Control as="select" aria-label="quantity" name="quantity">
+  //             <option value="1">1</option>
+  //             <option value="2">2</option>
+  //             <option value="3">3</option>
+  //             <option value="4">4</option>
+  //             <option value="5">5</option>
+  //           </Form.Control>
+  //         </Form>
+  //       </Col>
+  //       <Col>Subtotal</Col>
+  //       <Col>
+  //         <div className="fas fa-trash-alt trashBtn"> Remove</div>
+  //       </Col>
+  //     </Row>
+  //     <Row>
+  //       <Col />
+  //       <Col />
+  //       <Col />
+  //       <Col>
+  //         <h4>Total:</h4>
+  //       </Col>
+  //       <Col>
+  //         <h4>$100.00</h4>
+  //       </Col>
+  //       <Col />
+
+  //     </Row>
+  //   </Container>
+
+  // </div>
 )
 
 export default CartTable
