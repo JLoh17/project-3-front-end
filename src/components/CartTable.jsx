@@ -15,6 +15,7 @@ const CartTable = () => (
           <th>Unit Cost</th>
           <th>Quantity</th>
           <th>Subtotal</th>
+          <th />
         </tr>
       </thead>
       <tbody>
