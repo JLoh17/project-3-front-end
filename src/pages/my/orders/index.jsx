@@ -8,6 +8,10 @@ class MyOrdersIndex extends React.Component {
     super(props)
 
     this.state = {
+      // page: 1,
+      // q: '',
+      // sort: 'createdAt',
+      // status: ''
     }
   }
 
@@ -36,28 +40,9 @@ class MyOrdersIndex extends React.Component {
               <td className="first-row">Order.grandtotal</td>
               <td className="first-row">Order.status</td>
               <td className="first-row">
-                <span className="fas fa-trash-alt">Cancel</span>
-                {/* Do styles.scss margin-left (10px maybe) to separate this button */}
-                <span className="fas fa-clone">Duplicate Order</span>
-              </td>
-            </tr>
-            <tr>
-              <td className="first-row">12 October 2021</td>
-              <td className="first-row">Order #</td>
-              <td className="first-row">1,400</td>
-              <td className="first-row">Delivered</td>
-              <td className="first-row">
-                <span className="fas fa-trash-alt">Cancel</span>
-                {/* Do styles.scss margin-left (10px maybe) to separate this button */}
-                <span className="fas fa-clone">Duplicate Order</span>
-              </td>
-            </tr>
-            <tr>
-              <td className="first-row">12 October 2021</td>
-              <td className="first-row">Order #</td>
-              <td className="first-row">1,400</td>
-              <td className="first-row">Delivered</td>
-              <td className="first-row">
+
+                {/* if order.status == "pending payment", show cancel + duplicate order
+                otherwise show duplicate order */}
                 <span className="fas fa-trash-alt">Cancel</span>
                 {/* Do styles.scss margin-left (10px maybe) to separate this button */}
                 <span className="fas fa-clone">Duplicate Order</span>

@@ -12,15 +12,15 @@ class SearchSort extends React.Component {
 
   render() {
     return (
-      <div className="d-flex justify-content-between my-5">
+      <div id="SearchSort" className="d-flex justify-content-between my-5">
         <Form inline>
           <h4>Search:</h4>
-          <Form.Control type="text" placeholder="Search" />
-          <Button variant="outline-success" className="ms-3">Search</Button>
+          <Form.Control type="text" placeholder="Search" className="btn-spacing" />
+          <Button variant="outline-success" className="btn-spacing">Search</Button>
         </Form>
         <Form inline>
           <h4>Filter by status:</h4>
-          <Form.Control as="select">
+          <Form.Control as="select" className="btn-spacing">
             <option defaultChecked>All</option>
             <option>Delivered</option>
             <option>Pending Delivery</option>
