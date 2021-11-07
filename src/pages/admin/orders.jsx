@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 import SearchSort from '@/components/SearchSort'
 import Table from 'react-bootstrap/Table'
@@ -23,21 +24,27 @@ const AdminOrders = () => (
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td className="first-row">Order.createdAt</td>
-          <td className="first-row">Order.id</td>
-          <td className="first-row">Order.grandtotal</td>
-          <td className="first-row">Order.status</td>
-          <td className="first-row">
-            <Form.Group controlId="exampleForm.ControlSelect1">
-              <Form.Control as="select">
-                <option defaultChecked>Pending payment</option>
-                <option>Pending delivery</option>
-                <option>Delivered</option>
-              </Form.Control>
-            </Form.Group>
-          </td>
 
+        {/* Map this section */}
+        <tr>
+          <td>Order.createdAt</td>
+          <td>Order.id</td>
+          <td>Order.grandtotal</td>
+          <td>Order.status</td>
+          <td>
+            <Form.Control as="select" aria-label="status" name="status">
+              <option defaultChecked>Pending payment</option>
+              <option>Pending delivery</option>
+              <option>Delivered</option>
+            </Form.Control>
+          </td>
+        </tr>
+
+        <tr>
+          <td colSpan="4" />
+          <td>
+            <Button variant="warning"> Update Status </Button>
+          </td>
         </tr>
       </tbody>
     </Table>

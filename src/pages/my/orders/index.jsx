@@ -35,11 +35,11 @@ class MyOrdersIndex extends React.Component {
           </thead>
           <tbody>
             <tr>
-              <td className="first-row">Order.createdAt</td>
-              <td className="first-row">Order.id</td>
-              <td className="first-row">Order.grandtotal</td>
-              <td className="first-row">Order.status</td>
-              <td className="first-row">
+              <td>Order.createdAt</td>
+              <td>Order.id</td>
+              <td>Order.grandtotal</td>
+              <td>Order.status</td>
+              <td>
 
                 {/* if order.status == "pending payment", show cancel + duplicate order
                 otherwise show duplicate order */}
