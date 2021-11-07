@@ -12,7 +12,7 @@ class SearchSort extends React.Component {
 
   render() {
     return (
-      <div className="d-flex justify-content-between mt-5">
+      <div className="d-flex justify-content-between my-5">
         <Form inline>
           <h4>Search:</h4>
           <Form.Control type="text" placeholder="Search" />
@@ -21,6 +21,7 @@ class SearchSort extends React.Component {
         <Form inline>
           <h4>Filter by status:</h4>
           <Form.Control as="select">
+            <option defaultChecked>All</option>
             <option>Delivered</option>
             <option>Pending Delivery</option>
             <option>Pending Payment</option>

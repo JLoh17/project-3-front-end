@@ -1,0 +1,20 @@
+#my-orders-index {
+
+
+  tr>th {
+    border: none;
+    font-size: larger;
+  }
+
+  tr>td {
+    border-top: 2px solid lightgray;
+  }
+
+  .fa-trash-alt {
+    color: red;
+  }
+
+  .fa-clone {
+    padding-left: 10px;
+  }
+}
