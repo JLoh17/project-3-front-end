@@ -7,7 +7,6 @@ import Footer from '@/components/Footer'
 
 import Skeleton from 'react-loading-skeleton'
 
-
 import { getProductList } from '@/actions/product/index'
 
 // functional components cannot use lifecycle hooks
@@ -123,7 +122,6 @@ class ProductIndex extends React.Component {
         </div>
         <Footer />
       </>
-
 
     )
   }
