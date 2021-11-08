@@ -17,7 +17,7 @@ const ProductShow = (props) => {
     props.getProductShow(params.id)
   }, [])
 
-  const { productShow: { product, isLoading } } = props
+  const { productShow: { product, isLoading }, currentUser } = props
 
   if (isLoading) {
     return (
@@ -29,22 +29,15 @@ const ProductShow = (props) => {
 
   if (!product) return null
 
-  const getCategoryByFilter = (catId) => { // this is referring to the getCategoryByFilter under <Card>
-    const { history: { push } } = props // redirects to the push on the line below
-    push(`/products?catName=${catId}`)
-  }
-
   return (
     <div id="product-show" className="container my-3">
       <header className="text-center border-bottom">
         <h3>{product.Category.catName}</h3>
-        <div><Link to="/products">Back to {product.Category.catName}</Link></div>
-        <div><Link to="/orders/new">Delivery Details</Link></div>
+        <div><Link to={`/products?catName=${product.Category.id}`}>Back to {product.Category.catName}</Link></div>
       </header>
       <div className="d-flex">
-
         <CompCarousel images={product.Images} />
-        <CompProductSelector product={product} />
+        <CompProductSelector product={product} currentUser={currentUser} />
       </div>
       <Footer />
     </div>
@@ -54,11 +47,13 @@ const ProductShow = (props) => {
 ProductShow.propTypes = {
   getProductShow: PropTypes.func.isRequired,
   match: PropTypes.shape().isRequired,
-  productShow: PropTypes.shape().isRequired
+  productShow: PropTypes.shape().isRequired,
+  currentUser: PropTypes.shape().isRequired
 }
 
 const mapStateToProps = (state) => ({
-  productShow: state.productShow
+  productShow: state.productShow,
+  currentUser: state.currentUser.currentUser
 })
 
 const mapDispatchToProps = {
