@@ -1,0 +1,23 @@
+#my-orders-index {
+
+  table td {
+    vertical-align: middle;
+  }
+
+  tr>th {
+    border: none;
+    font-size: larger;
+  }
+
+  tr>td {
+    border-top: 2px solid lightgray;
+  }
+
+  .fa-trash-alt {
+    color: red;
+  }
+
+  .fa-clone {
+    padding-left: 10px;
+  }
+}
