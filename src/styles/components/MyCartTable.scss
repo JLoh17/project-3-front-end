@@ -1,0 +1,30 @@
+#ComponentsCartTable {
+  .pic-resize {
+    max-width: 30vw;
+    max-height: 30vh
+  }
+
+  table th {
+    border-top: none;
+  }
+
+  table td {
+    vertical-align: middle;
+  }
+
+  .trashBtn {
+    color: red;
+  }
+
+  .trashBtn:hover {
+    cursor: pointer;
+  }
+
+  .submitButton {
+    border-bottom: none;
+  }
+
+  .border {
+    border-top: none;
+  }
+}
