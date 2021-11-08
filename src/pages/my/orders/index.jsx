@@ -1,21 +1,30 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 import SearchSort from '@/components/SearchSort'
 import Table from 'react-bootstrap/Table'
+
+import { getOrdersIndex } from '@/actions/my/orders/index'
 
 class MyOrdersIndex extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      // page: 1,
-      // q: '',
-      // sort: 'createdAt',
-      // status: ''
+      page: 1,
+      sort: 'createdAt',
+      status: ''
     }
   }
 
+  componentDidMount() {
+    this.props.getOrdersIndex(this.state)
+  }
+
   render() {
+    const { orderIndex: { listOrder, meta, isLoading } } = this.props
+
     return (
       <div id="my-orders-index" className="container">
         <header className="text-center my-3">
@@ -33,21 +42,31 @@ class MyOrdersIndex extends React.Component {
               <th />
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>Order.createdAt</td>
-              <td>Order.id</td>
-              <td>Order.grandtotal</td>
-              <td>Order.status</td>
-              <td>
 
-                {/* if order.status == "pending payment", show cancel + duplicate order
-                otherwise show duplicate order */}
-                <span className="fas fa-trash-alt">Cancel</span>
-                {/* Do styles.scss margin-left (10px maybe) to separate this button */}
-                <span className="fas fa-clone">Duplicate Order</span>
-              </td>
-            </tr>
+          <tbody>
+            {
+            listOrder.map((order) => (
+              <tr>
+                <td>{order.createdAt.slice(0, 10)}</td>
+                <td>{order.id}</td>
+                <td>{order.grandTotal}</td>
+                <td>{order.status}</td>
+                <td>
+                  {
+                  order.status === 'Pending Payment' ? (
+                    <>
+                      <span className="fas fa-trash-alt">Cancel</span>
+                      <span className="fas fa-clone">Duplicate Order</span>
+                    </>
+                  ) : (
+                    <span className="fas fa-clone">Duplicate Order</span>
+                  )
+                }
+                </td>
+              </tr>
+            ))
+
+          }
           </tbody>
         </Table>
 
@@ -56,4 +75,17 @@ class MyOrdersIndex extends React.Component {
   }
 }
 
-export default MyOrdersIndex
+MyOrdersIndex.propTypes = {
+  getOrdersIndex: PropTypes.func.isRequired,
+  orderIndex: PropTypes.func.isRequired
+}
+
+const mapStateToProps = (state) => ({
+  orderIndex: state.orderIndex
+})
+
+const mapDispatchToProps = {
+  getOrdersIndex
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyOrdersIndex)
