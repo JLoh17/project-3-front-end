@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import DeliveryDetails from '@/forms/delivery-details'
+import CompCheckoutSide from '@/components/CheckoutSide'
 
 const MyOrdersNew = () => (
   <>
@@ -11,7 +12,15 @@ const MyOrdersNew = () => (
         <div><Link to="/my/OrdersShow">My Orders Show</Link></div>
       </header>
       <h2>Delivery Address Information</h2>
-      <DeliveryDetails />
+      <div className="d-flex">
+        <div className="col-6">
+          <DeliveryDetails />
+        </div>
+        <div className="col-6">
+          <CompCheckoutSide />
+        </div>
+
+      </div>
     </div>
   </>
 )

@@ -28,6 +28,7 @@ class ProductIndex extends React.Component {
 
     this.getFilteredProductsPrevious = this.getFilteredProductsPrevious.bind(this)
     this.getFilteredProductsNext = this.getFilteredProductsNext.bind(this)
+    this.productShow = this.productShow.bind(this)
   }
 
   componentDidMount() {
@@ -47,6 +48,11 @@ class ProductIndex extends React.Component {
   getFilteredProductsPrevious(newPage) {
     this.props.getProductList({ ...this.state, page: newPage })
     this.setState({ page: newPage })
+  }
+
+  productShow(productId) {
+    const { history: { push } } = this.props // redirects to the push on the line below
+    push(`/products/${productId}`)
   }
 
   renderIndex() {
@@ -80,7 +86,7 @@ class ProductIndex extends React.Component {
             <Card
               key={product.id}
               className="col-6 col-md-3 p-0"
-              onClick={this.productShow}
+              onClick={() => this.productShow(product.id)}
             >
               <Card.Img variant="top" src={product.Images?.[0]?.imageURL} />
               <Card.Body>
