@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router'
 import { NavLink } from 'react-router-dom'
-import { Navbar, Nav, Form, Button, FormControl, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav, Form, Button, FormControl, NavDropdown, Badge } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 import { authSignup, authLogout } from '@/actions/auth'
@@ -64,6 +64,7 @@ class LayoutsNavbar extends React.Component {
             </NavDropdown>
             <Nav.Link as={NavLink} to="/my/cart" eventKey="3">
               <span className="fas fa-shopping-cart" /> My Cart
+              <Badge variant="success" className="mx-1"><span /> 9</Badge>
             </Nav.Link>
           </Nav>
         </>

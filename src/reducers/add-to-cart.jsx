@@ -6,7 +6,7 @@ import {
 } from '@/actions/my/cart/new'
 
 const initialState = {
-  myCart: [],
+  // myCart: [],
   isLoading: false
 }
 

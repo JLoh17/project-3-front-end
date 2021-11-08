@@ -3,13 +3,12 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { getProductShow } from '@/actions/product/show'
-
 import CompCarousel from '@/components/Carousel'
 import Footer from '@/components/Footer'
-
 import CompProductSelector from '@/components/ProductSelector'
 import CompLoading from '@/components/Loading'
+
+import { getProductShow } from '@/actions/product/show'
 
 const ProductShow = (props) => {
   useEffect(() => {

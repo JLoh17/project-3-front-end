@@ -10,7 +10,8 @@ export const createCartItem = (values) => (dispatch) => new Promise((resolve, re
   axios({
     method: 'POST',
     url: `${process.env.API_DOMAIN}/api/my/cart/new`,
-    data: values
+    data: values,
+    withCredentials: true
   }).then((resp) => {
     // dispatch(addProductToCart(resp.data))
     resolve(resp)
@@ -28,7 +29,7 @@ export const createCartItem = (values) => (dispatch) => new Promise((resolve, re
 //   dispatch(loading(UPDATE_PRODUCT, { loading: true, id: ProductId }))
 //   axios({
 //     method: 'PUT',
-//     url: `https://fswdi-api-auth-todos.herokuapp.com/api/todos/${OrderId}/todo-items/${ProductId}`,
+//     url: `${process.env.API_DOMAIN}/api/todos/${OrderId}/todo-items/${ProductId}`,
 //     data: values
 //   }).then((resp) => {
 //     dispatch(editProductInCart(resp.data))
@@ -47,7 +48,7 @@ export const createCartItem = (values) => (dispatch) => new Promise((resolve, re
 //   dispatch(loading(DESTROY_PRODUCT, { loading: true, id: ProductId }))
 //   axios({
 //     method: 'DELETE',
-//     url: `https://fswdi-api-auth-todos.herokuapp.com/api/todos/${OrderId}/todo-items/${ProductId}`
+//     url: `${process.env.API_DOMAIN}/api/todos/${OrderId}/todo-items/${ProductId}`
 //   }).then((resp) => {
 //     dispatch(removeProductInCart(ProductId))
 //     resolve(resp)
