@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
 import DeliveryDetails from '@/forms/delivery-details'
 import CompCheckoutSide from '@/components/CheckoutSide'
 
@@ -9,17 +10,17 @@ const MyOrdersNew = () => (
       <header className="text-center border-bottom">
         <h1>DELIVERY DETAILS</h1>
         <div><Link to="/">Home Page</Link></div>
-        <div><Link to="/my/OrdersShow">My Orders Show</Link></div>
       </header>
-      <h2>Delivery Address Information</h2>
-      <div className="d-flex">
-        <div className="col-6">
-          <DeliveryDetails />
+      <div className="row">
+        <div className="col-12 col-lg-6">
+          <DeliveryDetails
+            initialValues={{}}
+            onSubmit={() => {}}
+          />
         </div>
-        <div className="col-6">
+        <div className="col-12 col-lg-6">
           <CompCheckoutSide />
         </div>
-
       </div>
     </div>
   </>

@@ -2,18 +2,18 @@ import axios from 'axios'
 
 import { loading } from '@/actions/loading'
 
-// export const ADD_PRODUCT_TO_CART = 'ADD_PRODUCT_TO_CART'
+// export const ADD_PRODUCT_TO_CART = 'ADD_PRODUCT_TO_CART' //no need this if don't need to temporarily save cart items
 // export const addProductToCart = (payload) => ({ type: ADD_PRODUCT_TO_CART, payload })
 export const CREATE_CART_ITEM = 'CREATE_CART_ITEM'
 export const createCartItem = (values) => (dispatch) => new Promise((resolve, reject) => {
   dispatch(loading(CREATE_CART_ITEM, { loading: true }))
   axios({
-    method: 'POST',
+    method: 'GET',
     url: `${process.env.API_DOMAIN}/api/my/cart/new`,
     data: values,
     withCredentials: true
   }).then((resp) => {
-    // dispatch(addProductToCart(resp.data))
+    // dispatch(addProductToCart(resp.data)) //no need this if don't need to temporarily save cart items
     resolve(resp)
   }).catch((err) => {
     reject(err)

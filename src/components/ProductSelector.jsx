@@ -13,7 +13,7 @@ const CompProductSelector = ({ product, currentUser, ...props }) => {
   const [buttonDisable, setButtonDisable] = useState(false)
 
   const handleAddToCart = (values) => {
-    // props.createCartItem(values)
+    props.createCartItem(values)
     console.log('Item added')
   }
 

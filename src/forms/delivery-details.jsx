@@ -1,65 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Formik, Field, Form, FieldArray, ErrorMessage } from 'formik'
+import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as yup from 'yup'
-
-// const RenderTodoItems = ({ form: { values, errors, touched }, remove, push }) => (
-//   <ul className="list-group mb-3">
-//     {
-//       values.TodoItems.length > 0 && values.TodoItems.map((item, index) => {
-//         const key = `item-${index}`
-//         const itemErrors = (errors.TodoItems && errors.TodoItems[index]) || {}
-//         const itemTouched = (touched.TodoItems && touched.TodoItems[index]) || {}
-
-//         return (
-//           <li className="list-group-item" key={key}>
-//             <div className="position-relative">
-//               <h6 className="text-center">Item {index + 1}</h6>
-
-//               <div className="form-group">
-//                 <label htmlFor={`TodoItems.${index}.name`}>Name</label>
-//                 <Field
-//                   id={`TodoItems.${index}.name`}
-//                   className={`form-control ${(itemErrors.name && itemTouched.name ? ' is-invalid' : '')}`}
-//                   name={`TodoItems.${index}.name`}
-//                   type="text"
-//                 />
-//                 <ErrorMessage component="div" className="invalid-feedback" name={`TodoItems.${index}.name`} />
-//               </div>
-
-//               <div className="form-group custom-control custom-checkbox">
-//                 <Field
-//                   id={`TodoItems.${index}.checked`}
-//                   className="custom-control-input"
-//                   name={`TodoItems.${index}.checked`}
-//                   type="checkbox"
-//                 />
-//                 <label className="custom-control-label" htmlFor={`TodoItems.${index}.checked`}>Completed</label>
-//                 <ErrorMessage component="div" className="invalid-feedback" name={`TodoItems.${index}.checked`} />
-//               </div>
-
-//               <button type="button" className="btn btn-danger btn-sm position-absolute" style={{ top: 0, right: 0 }} onClick={() => remove(index)}>X</button>
-//             </div>
-//           </li>
-//         )
-//       })
-//     }
-//     <button type="button" className="btn btn-primary" onClick={() => push({ name: '', checked: false })}>Add Item</button>
-//   </ul>
-// )
-// RenderTodoItems.propTypes = {
-//   form: PropTypes.shape({
-//     values: PropTypes.shape().isRequired,
-//     errors: PropTypes.shape().isRequired,
-//     touched: PropTypes.shape().isRequired
-//   }).isRequired,
-//   remove: PropTypes.func.isRequired,
-//   push: PropTypes.func.isRequired
-// }
 
 const RenderForm = ({ errors, touched, isSubmitting }) => (
   <Form>
-    <div className="form-group col-8 my-0">
+    <h4 className="text-center my-3">Delivery Address Information</h4>
+
+    <div className="form-group">
       <label htmlFor="firstName">First Name</label>
       <Field
         id="firstName"
@@ -69,7 +17,8 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
       />
       <ErrorMessage component="div" className="invalid-feedback" name="firstName" />
     </div>
-    <div className="col-8 my-1 my-1">
+
+    <div className="form-group">
       <label htmlFor="lastName">Last Name</label>
       <Field
         id="lastName"
@@ -79,7 +28,8 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
       />
       <ErrorMessage component="div" className="invalid-feedback" name="lastName" />
     </div>
-    <div className="col-8 my-1">
+
+    <div className="form-group">
       <label htmlFor="telephone">Telephone</label>
       <Field
         id="telephone"
@@ -89,7 +39,8 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
       />
       <ErrorMessage component="div" className="invalid-feedback" name="telephone" />
     </div>
-    <div className="col-8 my-1">
+
+    <div className="form-group">
       <label htmlFor="address">Address</label>
       <Field
         id="address"
@@ -102,20 +53,22 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
       />
       <ErrorMessage component="div" className="invalid-feedback" name="address" />
     </div>
-    <div className="custom-control custom-checkbox col-8 ml-3 my-2">
+
+    <div className="custom-control custom-checkbox form-group">
       <Field
         id="saveAsDefaultAddress"
         className="custom-control-input"
         name="saveAsDefaultAddress"
         type="checkbox"
-        onChange=""
+        checked
       />
       <label className="custom-control-label" htmlFor="saveAsDefaultAddress">Save as default address</label>
       <ErrorMessage component="div" className="invalid-feedback" name="saveAsDefaultAddress" />
     </div>
-    {/* <FieldArray name="TodoItems" component={RenderTodoItems} /> */}
 
-    <button className="btn btn-success col-6 ml-3" type="submit" disabled={isSubmitting}>Confirm Checkout</button>
+    <div className="text-center">
+      <button className="btn btn-success col-6 ml-3" type="submit" disabled={isSubmitting}>Confirm Checkout</button>
+    </div>
   </Form>
 )
 RenderForm.propTypes = {
