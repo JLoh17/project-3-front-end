@@ -57,7 +57,9 @@ class MyOrdersIndex extends React.Component {
                 <td onClick={() => this.orderShow(order.id)}>{order.createdAt.slice(0, 10)}</td>
                 <td onClick={() => this.orderShow(order.id)}>
                   {order.id}</td>
-                <td onClick={() => this.orderShow(order.id)}>{order.grandTotal}</td>
+                <td onClick={() => this.orderShow(order.id)}>{order.grandTotal.toLocaleString('en-HK', {
+                  style: 'currency',
+                  currency: 'HKD' })}</td>
                 <td onClick={() => this.orderShow(order.id)}>{order.status}</td>
                 {/* pointEvent stops this from being click under the table row */}
                 {/* Remove this and put it in style */}

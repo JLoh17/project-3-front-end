@@ -17,26 +17,16 @@ class SearchSort extends React.Component {
   render() {
     return (
       <Container id="SearchSort" className="my-5">
-        <Row>
-          <Col>
-            <Form inline>
-              <h4>Search:</h4>
-              <Form.Control type="text" placeholder="Search" className="btn-spacing" />
-              <Button variant="outline-success" className="btn-spacing">Search</Button>
-            </Form>
-          </Col>
-          <Col className="col-auto">
-            <Form inline>
-              <h4>Filter by status:</h4>
-              <Form.Control as="select" className="btn-spacing">
-                <option defaultChecked>All</option>
-                <option>Delivered</option>
-                <option>Pending Delivery</option>
-                <option>Pending Payment</option>
-              </Form.Control>
-            </Form>
-          </Col>
-        </Row>
+        <Form inline className="justify-content-end">
+          <h4>Filter by status:</h4>
+          <Form.Control as="select" className="btn-spacing">
+            <option defaultChecked>All</option>
+            <option>Delivered</option>
+            <option>Pending Delivery</option>
+            <option>Pending Payment</option>
+          </Form.Control>
+        </Form>
+
       </Container>
 
     // <div id="SearchSort" className="d-flex justify-content-between my-5">
