@@ -1,25 +1,23 @@
 import produce from 'immer'
 
 import {
-  SET_PRODUCTLIST,
-  GET_PRODUCTLIST
-} from '@/actions/product/'
+  // ADD_PRODUCT_TO_CART,
+  CREATE_CART_ITEM
+} from '@/actions/my/cart/new'
 
 const initialState = {
-  meta: null,
-  list: [],
+  // myCart: [],
   isLoading: false
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SET_PRODUCTLIST: {
-      return produce(state, (draft) => {
-        draft.list = action.payload.product
-        draft.meta = action.payload.meta
-      })
-    }
-    case GET_PRODUCTLIST: {
+    // case ADD_PRODUCT_TO_CART: {
+    //   return produce(state, (draft) => {
+    //     draft.myCart.push(action.payload.newCartItem)
+    //   })
+    // }
+    case CREATE_CART_ITEM: {
       return produce(state, (draft) => {
         draft.isLoading = action.payload.loading
       })
