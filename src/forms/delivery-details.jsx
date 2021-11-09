@@ -59,7 +59,7 @@ import * as yup from 'yup'
 
 const RenderForm = ({ errors, touched, isSubmitting }) => (
   <Form>
-    <div className="form-group col-8">
+    <div className="form-group col-8 my-0">
       <label htmlFor="firstName">First Name</label>
       <Field
         id="firstName"
@@ -69,7 +69,7 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
       />
       <ErrorMessage component="div" className="invalid-feedback" name="firstName" />
     </div>
-    <div className="col-8">
+    <div className="col-8 my-1 my-1">
       <label htmlFor="lastName">Last Name</label>
       <Field
         id="lastName"
@@ -79,7 +79,7 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
       />
       <ErrorMessage component="div" className="invalid-feedback" name="lastName" />
     </div>
-    <div className="col-8">
+    <div className="col-8 my-1">
       <label htmlFor="telephone">Telephone</label>
       <Field
         id="telephone"
@@ -89,13 +89,16 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
       />
       <ErrorMessage component="div" className="invalid-feedback" name="telephone" />
     </div>
-    <div className="col-8">
+    <div className="col-8 my-1">
       <label htmlFor="address">Address</label>
       <Field
         id="address"
         className={`form-control ${(errors.address && touched.address ? ' is-invalid' : '')}`}
         name="address"
         type="text"
+        // component="textarea"
+        // rows="4"
+        // value=""
       />
       <ErrorMessage component="div" className="invalid-feedback" name="address" />
     </div>
@@ -105,6 +108,7 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
         className="custom-control-input"
         name="saveAsDefaultAddress"
         type="checkbox"
+        onChange=""
       />
       <label className="custom-control-label" htmlFor="saveAsDefaultAddress">Save as default address</label>
       <ErrorMessage component="div" className="invalid-feedback" name="saveAsDefaultAddress" />

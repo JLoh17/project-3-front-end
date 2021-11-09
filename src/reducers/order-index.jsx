@@ -1,23 +1,25 @@
 import produce from 'immer'
 
 import {
-  SET_PRODUCT_SHOW,
-  GET_PRODUCT_SHOW
-} from '@/actions/product/show'
+  SET_MYORDERSINDEX,
+  GET_ORDERSINDEX
+} from '@/actions/my/orders/index'
 
 const initialState = {
-  product: null,
+  meta: null,
+  listOrder: [],
   isLoading: false
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SET_PRODUCT_SHOW: {
+    case SET_MYORDERSINDEX: {
       return produce(state, (draft) => {
-        draft.product = action.payload.product
+        draft.listOrder = action.payload.order
+        draft.meta = action.payload.meta
       })
     }
-    case GET_PRODUCT_SHOW: {
+    case GET_ORDERSINDEX: {
       return produce(state, (draft) => {
         draft.isLoading = action.payload.loading
       })

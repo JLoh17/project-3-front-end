@@ -12,8 +12,8 @@ const CompCheckoutSide = () => (
 
       <tr>
         <th>#</th>
-        <th>Product Name</th>
-        <th>Unit Cost</th>
+        <th>Item</th>
+        <th>Price</th>
         <th>Quantity</th>
         <th>Subtotal</th>
       </tr>
