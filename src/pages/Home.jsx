@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button'
 
 import Footer from '@/components/Footer'
 
-import { Form } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 

@@ -3,7 +3,16 @@ import PropTypes from 'prop-types'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as yup from 'yup'
 
+// const initialValues = {
+//   firstName: '',
+//   lastName: '',
+//   telephone: '',
+//   address: ''
+
+// }
+
 const RenderForm = ({ errors, touched, isSubmitting }) => (
+
   <Form>
     <h4 className="text-center my-3">Delivery Address Information</h4>
 
@@ -60,7 +69,6 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
         className="custom-control-input"
         name="saveAsDefaultAddress"
         type="checkbox"
-        checked
       />
       <label className="custom-control-label" htmlFor="saveAsDefaultAddress">Save as default address</label>
       <ErrorMessage component="div" className="invalid-feedback" name="saveAsDefaultAddress" />

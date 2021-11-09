@@ -14,7 +14,6 @@ const CompProductSelector = ({ product, currentUser, ...props }) => {
 
   const handleAddToCart = (values) => {
     props.createCartItem(values)
-    console.log('Item added')
   }
 
   return (

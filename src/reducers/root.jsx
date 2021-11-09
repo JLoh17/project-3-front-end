@@ -6,6 +6,7 @@ import ReducersProductIndex from '@/reducers/product-index'
 import ReducersProductShow from '@/reducers/product-show'
 import ReducersOrderIndex from '@/reducers/order-index'
 import ReducersMyCart from '@/reducers/my-cart'
+import ReducersOrderNew from '@/reducers/order-new'
 
 const createReducersRoot = (history) => combineReducers({
   currentUser: ReducersCurrentUser,
@@ -13,6 +14,7 @@ const createReducersRoot = (history) => combineReducers({
   productShow: ReducersProductShow,
   orderIndex: ReducersOrderIndex,
   myCart: ReducersMyCart,
+  orderNew: ReducersOrderNew,
   router: connectRouter(history)
 })
 
