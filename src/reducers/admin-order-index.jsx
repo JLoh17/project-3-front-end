@@ -2,7 +2,9 @@ import produce from 'immer'
 
 import {
   SET_MYADMINORDERSINDEX,
-  GET_MYADMINORDERSINDEX
+  GET_MYADMINORDERSINDEX,
+  EDIT_ADMIN_ORDERSTATUS,
+  UPDATE_ADMIN_ORDERSTATUS
 } from '@/actions/admin/index'
 
 const initialState = {
@@ -20,6 +22,16 @@ export default (state = initialState, action) => {
       })
     }
     case GET_MYADMINORDERSINDEX: {
+      return produce(state, (draft) => {
+        draft.isLoading = action.payload.loading
+      })
+    }
+    // ? What to write here
+    case EDIT_ADMIN_ORDERSTATUS: {
+      return produce(state, (draft) => {
+      })
+    }
+    case UPDATE_ADMIN_ORDERSTATUS: {
       return produce(state, (draft) => {
         draft.isLoading = action.payload.loading
       })

@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button'
 
 import Footer from '@/components/Footer'
 
-import { Form } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -45,13 +44,13 @@ class PagesHome extends React.Component {
       <>
         <div id="pages-home" className="container-fluid m-1">
           <header className="text-center border-bottom my-3">
-            <h1> Insert company name here</h1>
+            <h1>From Head to Toe</h1>
+            <h6>Men's fashion</h6>
           </header>
 
           <div className="d-flex justify-content-around my-3">
             <CardGroup>
               {
-                /* FOR LATER!! put the onClick on the Card itself */
                 categories.map((cat) => (
                   <Card key={cat.id} onClick={() => this.getCategoryByFilter(cat.id)}>
                     <Button variant="light" className="button shadow-none">

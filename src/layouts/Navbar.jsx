@@ -51,6 +51,7 @@ class LayoutsNavbar extends React.Component {
       return (
         <>
           <Nav className="ml-auto">
+            // ? Seach query necessary?
             <Form inline>
               <FormControl type="text" placeholder="Search" className="mr-sm-2" />
               <Button variant="outline-success">Search</Button>

@@ -3,12 +3,11 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
 
 import SearchSort from '@/components/SearchSort'
 
-import { getAdminOrdersIndex } from '@/actions/admin/index'
+import { getAdminOrdersIndex, updateAdminOrderStatus } from '@/actions/admin/index'
 
 class AdminOrders extends React.Component {
   constructor(props) {
@@ -19,10 +18,18 @@ class AdminOrders extends React.Component {
       sort: 'createdAt',
       status: ''
     }
+
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
     this.props.getAdminOrdersIndex(this.state)
+  }
+
+  handleChange(e) {
+    this.props.updateAdminOrderStatus(this.state)
+
+    console.log(e.target.value)
   }
 
   render() {
@@ -58,22 +65,22 @@ class AdminOrders extends React.Component {
                 })}</td>
                 <td>{order.status}</td>
                 <td>
-                  <Form.Control as="select" aria-label="status" name="status">
-                    <option defaultChecked>Pending payment</option>
-                    <option>Pending delivery</option>
-                    <option>Delivered</option>
+                  <Form.Control as="select" aria-label="status" name="status" onChange={this.handleChange}>
+                    <option
+                      defaultChecked
+                      value="Pending-Payment"
+                    >Pending payment</option>
+                    <option
+                      value="Pending-Delivery"
+                    >Pending delivery</option>
+                    <option
+                      value="Delivered"
+                    >Delivered</option>
                   </Form.Control>
                 </td>
               </tr>
             ))
             }
-
-            <tr>
-              <td colSpan="4" />
-              <td>
-                <Button variant="warning"> Update Status </Button>
-              </td>
-            </tr>
           </tbody>
         </Table>
       </div>
@@ -81,8 +88,10 @@ class AdminOrders extends React.Component {
   }
 }
 
+// TODO - pages required for administrator
 AdminOrders.propTypes = {
   getAdminOrdersIndex: PropTypes.func.isRequired,
+  updateAdminOrderStatus: PropTypes.func.isRequired,
   adminOrderIndex: PropTypes.func.isRequired
   // history: PropTypes.shape().isRequired
 
@@ -93,7 +102,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  getAdminOrdersIndex
+  getAdminOrdersIndex,
+  updateAdminOrderStatus
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminOrders)
