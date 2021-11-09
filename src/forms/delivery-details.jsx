@@ -78,6 +78,7 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
       <button className="btn btn-success col-6 ml-3" type="submit" disabled={isSubmitting}>Confirm Checkout</button>
     </div>
   </Form>
+
 )
 RenderForm.propTypes = {
   errors: PropTypes.shape().isRequired,
@@ -99,6 +100,7 @@ const FormsDeliveryDetails = ({ initialValues, onSubmit }) => (
     validationSchema={deliveryDetailsSchema}
     onSubmit={onSubmit}
     component={RenderForm}
+    enableReinitialize
   />
 )
 FormsDeliveryDetails.propTypes = {
