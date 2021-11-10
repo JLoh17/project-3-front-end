@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { withRouter } from 'react-router'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import DeliveryDetails from '@/forms/delivery-details'
@@ -16,32 +15,30 @@ const MyOrdersNew = ({ currentUser, ...props }) => {
     props.createMyOrder(values).then((resp) => {
       push(`/my/orders/${resp.data.id}`)
     }).catch(() => {
-    // }).catch((err) => {
+      // TODO toastify?
       alert('errors')
       methods.setSubmitting(false)
     })
   }
 
   return (
-    <>
-      <div id="orders-new" className="container">
-        <header className="text-center border-bottom">
-          <h1>DELIVERY DETAILS</h1>
-          {/* <div><Link to="/">Home Page</Link></div> */}
-        </header>
-        <div className="row">
-          <div className="col-12 col-lg-6">
-            <DeliveryDetails
-              initialValues={currentUser} // this is given from mapStateToProps
-              onSubmit={handleCreateNewOrder}
-            />
-          </div>
-          <div className="col-12 col-lg-6">
-            <CompCheckoutSide />
-          </div>
+    <div id="orders-new" className="container">
+      <header className="text-center border-bottom">
+        <h1>DELIVERY DETAILS</h1>
+        {/* <div><Link to="/">Home Page</Link></div> */}
+      </header>
+      <div className="row">
+        <div className="col-12 col-lg-6">
+          <DeliveryDetails
+            initialValues={currentUser} // this is given from mapStateToProps
+            onSubmit={handleCreateNewOrder}
+          />
+        </div>
+        <div className="col-12 col-lg-6">
+          <CompCheckoutSide />
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
@@ -49,7 +46,6 @@ MyOrdersNew.propTypes = {
   createMyOrder: PropTypes.func.isRequired,
   currentUser: PropTypes.shape().isRequired,
   history: PropTypes.shape().isRequired
-
 }
 
 const mapStateToProps = (state) => ({
@@ -61,4 +57,3 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyOrdersNew)
-// export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MyOrdersNew))

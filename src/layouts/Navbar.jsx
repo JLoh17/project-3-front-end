@@ -24,6 +24,8 @@ class LayoutsNavbar extends React.Component {
   }
 
   handleRegisterSubmit(values) {
+    // TODO add .catch to re-enable button if error
+    // TODO toastify?
     this.props.authSignup(values).then(() => {
       this.closeRegisterModal()
     })

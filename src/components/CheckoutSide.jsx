@@ -19,7 +19,7 @@ const CompCheckoutSide = ({ myCartState: { cart, isLoading }, ...props }) => {
   }
   if (cart.length === 0) return <div>No item in cart</div>
   return (
-    <>
+    <div id="comps-checkout-side">
       <h4 className="text-center my-3">Your Cart</h4>
       <table className="table table-sm table-bordered">
         <thead>
@@ -51,7 +51,7 @@ const CompCheckoutSide = ({ myCartState: { cart, isLoading }, ...props }) => {
         <span>&nbsp;</span>
         <span><h4><b>$ {cart.reduce((sum, item) => sum + (item.Product.price * item.quantity), 0)}</b></h4></span>
       </div>
-    </>
+    </div>
   )
 }
 

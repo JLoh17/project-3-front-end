@@ -25,14 +25,14 @@ class MyOrdersIndex extends React.Component {
     this.props.getOrdersIndex(this.state)
   }
 
+  // TODO Add action
+  handleDeleteClick(orderId) {
+    this.props.destroyMyOrder(orderId)
+  }
+
   orderShow(orderId) {
     const { history: { push } } = this.props
     push(`/my/orders/${orderId}`)
-  }
-
-  // TODO
-  handleDeleteClick(orderId) {
-    this.props.destroyMyOrder(orderId)
   }
 
   // TODO - Pagination is necessary for my-orders as could have many
@@ -72,7 +72,7 @@ class MyOrdersIndex extends React.Component {
                   {
                     order.status === 'Pending Payment' ? (
                       <>
-                        // TODO
+                        {/* TODO */}
                         <span className="click-auto fas fa-trash-alt" onClick>Cancel</span>
                         <span className="click-auto fas fa-clone" onClick>Duplicate Order</span>
                       </>
@@ -87,7 +87,6 @@ class MyOrdersIndex extends React.Component {
           }
           </tbody>
         </Table>
-
       </div>
     )
   }
@@ -97,7 +96,6 @@ MyOrdersIndex.propTypes = {
   getOrdersIndex: PropTypes.func.isRequired,
   orderIndex: PropTypes.func.isRequired,
   history: PropTypes.shape().isRequired
-
 }
 
 const mapStateToProps = (state) => ({
