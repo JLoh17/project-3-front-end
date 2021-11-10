@@ -24,6 +24,8 @@ class LayoutsNavbar extends React.Component {
   }
 
   handleRegisterSubmit(values) {
+    // TODO add .catch to re-enable button if error
+    // TODO toastify?
     this.props.authSignup(values).then(() => {
       this.closeRegisterModal()
     })
@@ -51,7 +53,6 @@ class LayoutsNavbar extends React.Component {
       return (
         <>
           <Nav className="ml-auto">
-            // ? Seach query necessary?
             <Form inline>
               <FormControl type="text" placeholder="Search" className="mr-sm-2" />
               <Button variant="outline-success">Search</Button>

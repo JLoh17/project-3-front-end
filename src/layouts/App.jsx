@@ -5,7 +5,11 @@ import { connect } from 'react-redux'
 
 import { getMyProfile } from '@/actions/my/profile'
 
+import Breadcrumb from '@/components/Breadcrumb'
+import LayoutsNavbar from '@/layouts/Navbar'
+
 import PagesHome from '@/pages/Home'
+
 import ProductIndex from '@/pages/ProductIndex'
 import ProductShow from '@/pages/ProductShow'
 
@@ -16,11 +20,9 @@ import MyOrdersShow from '@/pages/my/orders/show'
 import MyOrdersNew from '@/pages/my/orders/new'
 import MyOrdersIndex from '@/pages/my/orders/'
 
-import PagesNotFound from '@/pages/NotFound'
-
 import AdminOrders from '@/pages/admin/orders'
-import Breadcrumb from '@/components/Breadcrumb'
-import LayoutsNavbar from './Navbar'
+
+import PagesNotFound from '@/pages/NotFound'
 
 const App = (props) => {
   useEffect(() => {
@@ -40,11 +42,13 @@ const App = (props) => {
 
         <Route exact path="/my/cart" component={MyCart} />
         <Route exact path="/my/profile" component={MyProfile} />
+
         <Route exact path="/my/orders" component={MyOrdersIndex} />
         <Route exact path="/my/orders/new" component={MyOrdersNew} />
         <Route exact path="/my/orders/:id" component={MyOrdersShow} />
 
         <Route exact path="/admin/orders" component={AdminOrders} />
+
         <Route component={PagesNotFound} />
       </Switch>
     </Router>

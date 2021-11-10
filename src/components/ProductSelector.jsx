@@ -6,9 +6,9 @@ import { Card, ListGroup, ListGroupItem, Button, Form, OverlayTrigger, Popover }
 import { createCartItem } from '@/actions/my/cart/new'
 
 const CompProductSelector = ({ product, currentUser, ...props }) => {
+  const target = useRef(null)
   const [size, setSize] = useState(1)
   const [quantity, setQuantity] = useState(1)
-  const target = useRef(null)
   const [popoverShow, setPopoverShow] = useState(false)
   const [buttonDisable, setButtonDisable] = useState(false)
 
@@ -51,6 +51,7 @@ const CompProductSelector = ({ product, currentUser, ...props }) => {
           <OverlayTrigger
             trigger="click"
             placement="right"
+            show={popoverShow}
             overlay={(
               <Popover id="popover-basic" {...props}>
                 <Popover.Title
@@ -76,6 +77,10 @@ const CompProductSelector = ({ product, currentUser, ...props }) => {
                 handleAddToCart({ size, quantity, ProductId: product.id })
                 setButtonDisable(true)
                 setPopoverShow(true)
+                setTimeout(() => {
+                  setButtonDisable(false)
+                  setPopoverShow(false)
+                }, 2000)
               }}
             >Add to Cart</Button>
           </OverlayTrigger>

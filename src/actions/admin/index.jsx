@@ -6,7 +6,6 @@ export const SET_MYADMINORDERSINDEX = 'SET_MYADMINORDERSINDEX'
 export const setAdminOrdersIndex = (payload) => ({ type: SET_MYADMINORDERSINDEX, payload })
 
 export const GET_MYADMINORDERSINDEX = 'GET_MYADMINORDERSINDEX'
-
 export const getAdminOrdersIndex = (filter = {}) => (dispatch) => {
   dispatch(loading(GET_MYADMINORDERSINDEX, { loading: true }))
   axios({
@@ -25,7 +24,6 @@ export const EDIT_ADMIN_ORDERSTATUS = 'EDIT_ADMIN_ORDERSTATUS'
 export const editAdminOrderStatus = (payload) => ({ type: EDIT_ADMIN_ORDERSTATUS, payload })
 
 export const UPDATE_ADMIN_ORDERSTATUS = 'UPDATE_ADMIN_ORDERSTATUS'
-
 export const updateAdminOrderStatus = (OrderId) => (dispatch) => {
   dispatch(loading(UPDATE_ADMIN_ORDERSTATUS, { loading: true }))
   axios({
