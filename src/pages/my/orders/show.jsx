@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import { connect } from 'react-redux'
 import { ToastContainer, toast } from 'react-toastify'
 
 import FormsConfirmCheckout from '@/forms/confirm-checkout'
-import CompCheckoutSide from '@/components/CheckoutSide'
+import CompsPaymentSide from '@/components/PaymentSide'
 
 import { payMyOrder } from '@/actions/my/orders/pay'
 
-const MyOrdersShow = ({ currentUser, ...props }) => {
+const MyOrdersShow = ({ orderStatus: { orderDetails }, currentUser, match, ...props }) => {
   const handlePayNow = (values, methods) => {
     const { history: { push } } = props
     props.payMyOrder(values).then(() => {
@@ -27,24 +27,71 @@ const MyOrdersShow = ({ currentUser, ...props }) => {
     })
   }
 
+  useEffect(() => {
+  }, [])
+
+  if (orderDetails.status === 'Pending-Payment') {
+    return (
+      <>
+        <header className="text-center border-bottom">
+          <h1>CHECKOUT</h1>
+        </header>
+        <div className="row">
+          <div className="col-12 col-lg-6">
+            <FormsConfirmCheckout
+              initialValues={orderDetails || {}}
+              onSubmit={handlePayNow}
+            />
+          </div>
+          <div className="col-12 col-lg-6">
+            <CompsPaymentSide />
+          </div>
+          <ToastContainer />
+        </div>
+      </>
+    )
+  }
+
+  if (orderDetails.status === 'Pending-Delivery') {
+    return (
+      <>
+        <header className="text-center border-bottom">
+          <h1>ORDER {orderDetails.id}</h1>
+        </header>
+        <div className="row">
+          <div className="col-12 col-lg-6">
+            <FormsConfirmCheckout
+              initialValues={orderDetails || {}}
+              onSubmit="disabled"
+            />
+          </div>
+          <div className="col-12 col-lg-6">
+            <CompsPaymentSide />
+          </div>
+          <ToastContainer />
+        </div>
+      </>
+    )
+  }
+
   return (
     <div id="orders-new" className="container">
-      <header className="text-center border-bottom">
+      {/* <header className="text-center border-bottom">
         <h1>CHECKOUT</h1>
         <h1>ORDER #_________</h1>
       </header>
       <div className="row">
         <div className="col-12 col-lg-6">
           <FormsConfirmCheckout
-            initialValues={currentUser || {}}
+            initialValues={orderDetails || {}}
             onSubmit={handlePayNow}
           />
         </div>
         <div className="col-12 col-lg-6">
-          <CompCheckoutSide />
+          <CompsPaymentSide />
         </div>
         <ToastContainer />
-      </div>
+      </div> */}
     </div>
   )
 }
@@ -52,11 +99,13 @@ const MyOrdersShow = ({ currentUser, ...props }) => {
 MyOrdersShow.propTypes = {
   currentUser: PropTypes.shape().isRequired,
   payMyOrder: PropTypes.func.isRequired,
-  history: PropTypes.shape().isRequired
+  history: PropTypes.shape().isRequired,
+  orderStatus: PropTypes.shape().isRequired
 }
 
 const mapStateToProps = (state) => ({
-  currentUser: state.currentUser.currentUser
+  currentUser: state.currentUser.currentUser,
+  orderStatus: state.orderShow
 })
 
 const mapDispatchToProps = {

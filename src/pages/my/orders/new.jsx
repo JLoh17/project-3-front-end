@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { ToastContainer, toast } from 'react-toastify'
 
-import DeliveryDetails from '@/forms/delivery-details'
-import CompCheckoutSide from '@/components/CheckoutSide'
+import FormsDeliveryDetails from '@/forms/delivery-details'
+import CompsCheckoutSide from '@/components/CheckoutSide'
 
 import { createMyOrder } from '@/actions/my/orders/new'
 
@@ -13,7 +13,7 @@ const MyOrdersNew = ({ currentUser, ...props }) => {
   const handleCreateNewOrder = (values, methods) => {
     const { history: { push } } = props
     props.createMyOrder(values).then((resp) => {
-      push(`/my/orders/${resp.data.id}`)
+      push(`/my/orders/${resp.data.order.id}`)
     }).catch(() => {
       methods.setSubmitting(false)
       toast.error('Error to submit, please try again', {
@@ -34,14 +34,14 @@ const MyOrdersNew = ({ currentUser, ...props }) => {
       </header>
       <div className="row">
         <div className="col-12 col-lg-6">
-          <DeliveryDetails
+          <FormsDeliveryDetails
             // initialValues currentUser is given from mapStateToProps or set null
             initialValues={currentUser || {}}
             onSubmit={handleCreateNewOrder}
           />
         </div>
         <div className="col-12 col-lg-6">
-          <CompCheckoutSide />
+          <CompsCheckoutSide />
         </div>
         <ToastContainer />
       </div>
