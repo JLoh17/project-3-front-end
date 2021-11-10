@@ -47,7 +47,11 @@ const CartTable = ({ myCartState: { cart, isLoading }, ...props }) => {
                   <Image src={item.Product.Images?.[0]?.imageURL} className="pic-resize" />
                 </td>
                 <td>{item.Product.productName}</td>
-                <td>{item.Product.price}</td>
+                <td>{item.Product.price.toLocaleString('en-HK', {
+                  style: 'currency',
+                  currency: 'HKD'
+                })}
+                </td>
                 <td>
                   <Form>
                     <Form.Control as="select" aria-label="quantity" name="quantity">
@@ -59,7 +63,7 @@ const CartTable = ({ myCartState: { cart, isLoading }, ...props }) => {
                     </Form.Control>
                   </Form>
                 </td>
-                <td>Subtotal</td>
+                <td>{item.Product.price} * quantity</td>
                 <td>
                   <div className="fas fa-trash-alt trashBtn"> Remove</div>
                 </td>
@@ -76,7 +80,7 @@ const CartTable = ({ myCartState: { cart, isLoading }, ...props }) => {
               <h4>Total:</h4>
             </td>
             <td>
-              <h4>$100.00</h4>
+              <h4>Quantity * Price</h4>
             </td>
             <td>
               <Button variant="success" onClick={() => CartNextStep()}> Next Step </Button>
