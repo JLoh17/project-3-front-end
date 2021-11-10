@@ -26,9 +26,14 @@ export default (state = initialState, action) => {
         draft.isLoading = action.payload.loading
       })
     }
-    // ? What to write here
     case EDIT_ADMIN_ORDERSTATUS: {
       return produce(state, (draft) => {
+        const index = draft.listAdminOrder.findIndex((order) => order.id === action.payload.order.id)
+        if (index !== -1) draft.listAdminOrder[index] = action.payload.order
+
+        // draft[0] = action.payload.order
+        // if only one, then the singular order
+        // draft makes a copy of the state and compares between the two, then updates the change accordingly
       })
     }
     case UPDATE_ADMIN_ORDERSTATUS: {
