@@ -22,3 +22,22 @@ export const getOrdersIndex = (filter = {}) => (dispatch) => {
     dispatch(loading(GET_ORDERSINDEX, { loading: false }))
   })
 }
+
+// export const REMOVE_MY_ORDER = 'REMOVE_MY_ORDER'
+// export const removeMyOrder = (payload) => ({ type: REMOVE_MY_ORDER, payload })
+// export const DESTROY_MY_ORDER = 'DESTROY_MY_ORDER'
+// export const destroyMyOrder = (MyOrderId) => (dispatch) => new Promise((resolve, reject) => {
+//   dispatch(loading(DESTROY_MY_ORDER, { loading: true, id: MyOrderId }))
+//   axios({
+//     method: 'DELETE',
+//     url: `${process.env.API_DOMAIN}/api/my/orders/${MyOrderId}`,
+//     withCredentials: true
+//   }).then((resp) => {
+//     dispatch(removeMyOrder(MyOrderId))
+//     resolve(resp)
+//   }).catch((err) => {
+//     reject(err)
+//   }).finally(() => {
+//     dispatch(loading(DESTROY_MY_ORDER, { loading: false, id: MyOrderId }))
+//   })
+// })

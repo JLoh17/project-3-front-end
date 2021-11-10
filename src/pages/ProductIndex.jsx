@@ -117,7 +117,6 @@ class ProductIndex extends React.Component {
   render() {
     // const { productIndex: { list, product } = this.props
     return (
-
       <>
         <div id="product-index" className="container">
           <header className="text-center mb-3">

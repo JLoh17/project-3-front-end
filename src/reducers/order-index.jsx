@@ -2,7 +2,9 @@ import produce from 'immer'
 
 import {
   SET_MYORDERSINDEX,
-  GET_ORDERSINDEX
+  GET_ORDERSINDEX,
+  REMOVE_MY_ORDER,
+  DESTROY_MY_ORDER
 } from '@/actions/my/orders/index'
 
 const initialState = {
@@ -24,6 +26,18 @@ export default (state = initialState, action) => {
         draft.isLoading = action.payload.loading
       })
     }
+
+    // TODO
+    // case REMOVE_MY_ORDER: {
+    //   return produce(state, (draft) => {
+    //     draft
+    //   })
+    // }
+    // case DESTROY_MY_ORDER: {
+    //   return produce(state, (draft) => {
+    //     draft
+    //   })
+    // }
     default: {
       return state
     }

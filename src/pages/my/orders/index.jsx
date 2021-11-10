@@ -18,6 +18,7 @@ class MyOrdersIndex extends React.Component {
     }
 
     this.orderShow = this.orderShow.bind(this)
+    this.handleDeleteClick = this.handleDeleteClick.bind(this)
   }
 
   componentDidMount() {
@@ -29,6 +30,12 @@ class MyOrdersIndex extends React.Component {
     push(`/my/orders/${orderId}`)
   }
 
+  // TODO
+  handleDeleteClick(orderId) {
+    this.props.destroyMyOrder(orderId)
+  }
+
+  // TODO - Pagination is necessary for my-orders as could have many
   render() {
     const { orderIndex: { listOrder, meta, isLoading } } = this.props
 
@@ -57,14 +64,15 @@ class MyOrdersIndex extends React.Component {
                 <td onClick={() => this.orderShow(order.id)}>{order.createdAt.slice(0, 10)}</td>
                 <td onClick={() => this.orderShow(order.id)}>
                   {order.id}</td>
-                <td onClick={() => this.orderShow(order.id)}>{order.grandTotal}</td>
+                <td onClick={() => this.orderShow(order.id)}>{order.grandTotal.toLocaleString('en-HK', {
+                  style: 'currency',
+                  currency: 'HKD' })}</td>
                 <td onClick={() => this.orderShow(order.id)}>{order.status}</td>
-                {/* pointEvent stops this from being click under the table row */}
-                {/* Remove this and put it in style */}
                 <td>
                   {
                     order.status === 'Pending Payment' ? (
                       <>
+                        // TODO
                         <span className="click-auto fas fa-trash-alt" onClick>Cancel</span>
                         <span className="click-auto fas fa-clone" onClick>Duplicate Order</span>
                       </>
