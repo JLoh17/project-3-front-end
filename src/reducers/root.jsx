@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
 
-import ReducersCurrentUser from '@/reducers/current-user'
-import ReducersProductIndex from '@/reducers/product-index'
-import ReducersProductShow from '@/reducers/product-show'
-import ReducersOrderIndex from '@/reducers/order-index'
-import ReducersAdminOrderIndex from '@/reducers/admin-order-index'
-import ReducersMyCart from '@/reducers/my-cart'
-import ReducersOrderNew from '@/reducers/order-new'
+import ReducersCurrentUser from '@/reducers/my/current-user'
+import ReducersProductIndex from '@/reducers/product/product-index'
+import ReducersProductShow from '@/reducers/product/product-show'
+import ReducersOrderIndex from '@/reducers/my/orders/order-index'
+import ReducersAdminOrderIndex from '@/reducers/admin/admin-order-index'
+import ReducersMyCart from '@/reducers/my/cart/my-cart'
+import ReducersOrderNew from '@/reducers/my/orders/order-new'
 
 const createReducersRoot = (history) => combineReducers({
   currentUser: ReducersCurrentUser,

@@ -10,6 +10,8 @@ const LoginPopover = ({ children, ...props }) => {
   const [show, setShow] = useState(false)
 
   const handleLoginSubmit = (values) => {
+    // TODO add .catch to re-enable button if error
+    // TODO toastify?
     props.authLogin(values).then(() => {
       setShow(false)
     })
