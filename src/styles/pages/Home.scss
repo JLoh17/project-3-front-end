@@ -1,7 +1,7 @@
 // this bounds these styles to the pages-home component
 #pages-home {
   .card-img-top {
-    width: 60vh;
+    max-width: 100%;
     height: 80vh;
     object-fit: cover;
   }

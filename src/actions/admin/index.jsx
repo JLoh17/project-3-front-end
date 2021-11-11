@@ -24,11 +24,13 @@ export const EDIT_ADMIN_ORDERSTATUS = 'EDIT_ADMIN_ORDERSTATUS'
 export const editAdminOrderStatus = (payload) => ({ type: EDIT_ADMIN_ORDERSTATUS, payload })
 
 export const UPDATE_ADMIN_ORDERSTATUS = 'UPDATE_ADMIN_ORDERSTATUS'
-export const updateAdminOrderStatus = (OrderId) => (dispatch) => {
+// Refer to handleChange in admin-orders
+export const updateAdminOrderStatus = (values, OrderId) => (dispatch) => {
   dispatch(loading(UPDATE_ADMIN_ORDERSTATUS, { loading: true }))
   axios({
     method: 'PUT',
-    url: `${process.env.API_DOMAIN}/api/admin/${OrderId}`,
+    url: `${process.env.API_DOMAIN}/api/admin/orders/${OrderId}`,
+    data: values,
     withCredentials: true
   }).then((resp) => {
     dispatch(editAdminOrderStatus(resp.data))
