@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import { connect } from 'react-redux'
-import { ToastContainer, toast } from 'react-toastify'
+// import { ToastContainer, toast } from 'react-toastify'
 
 import FormsConfirmCheckout from '@/forms/confirm-checkout'
 import CompsPaymentSide from '@/components/PaymentSide'
 
 import { payMyOrder } from '@/actions/my/orders/pay'
+import { getMyOrdersShow } from '@/actions/my/orders/show'
 
 const MyOrdersShow = ({ orderStatus: { orderDetails }, currentUser, match, ...props }) => {
+  useEffect(() => {
+    props.getMyOrdersShow(match.params.id)
+  }, [])
+
   const handlePayNow = (values, methods) => {
     const { history: { push } } = props
     props.payMyOrder(values).then(() => {
@@ -27,14 +32,13 @@ const MyOrdersShow = ({ orderStatus: { orderDetails }, currentUser, match, ...pr
     })
   }
 
-  useEffect(() => {
-  }, [])
+  if (!orderDetails) return <div>No Such Order</div>
 
   if (orderDetails.status === 'Pending-Payment') {
     return (
       <>
         <header className="text-center border-bottom">
-          <h1>CHECKOUT</h1>
+          <h1>PAYMENT</h1>
         </header>
         <div className="row">
           <div className="col-12 col-lg-6">
@@ -100,7 +104,10 @@ MyOrdersShow.propTypes = {
   currentUser: PropTypes.shape().isRequired,
   payMyOrder: PropTypes.func.isRequired,
   history: PropTypes.shape().isRequired,
-  orderStatus: PropTypes.shape().isRequired
+  orderStatus: PropTypes.shape().isRequired,
+  getMyOrdersShow: PropTypes.func.isRequired,
+  match: PropTypes.shape().isRequired
+
 }
 
 const mapStateToProps = (state) => ({
@@ -109,7 +116,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  payMyOrder
+  payMyOrder,
+  getMyOrdersShow
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyOrdersShow)
