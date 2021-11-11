@@ -7,7 +7,7 @@ export const payMyOrder = (values) => (dispatch) => new Promise((resolve, reject
   dispatch(loading(PAY_MY_ORDER, { loading: true }))
   axios({
     method: 'PUT',
-    url: `${process.env.API_DOMAIN}/api/my/orders/:id/pay`,
+    url: `${process.env.API_DOMAIN}/api/my/orders/${values.id}/pay`,
     data: values,
     withCredentials: true
   }).then((resp) => {

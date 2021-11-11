@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 const PrivateRoute = ({ component: Component, currentUserState: { currentUser }, ...rest }) => {
   if (!currentUser) {
@@ -25,7 +25,6 @@ const PrivateRoute = ({ component: Component, currentUserState: { currentUser },
           currentUser ? <Component {...props} /> : <Redirect to="/" />
         )}
       />
-      <ToastContainer />
     </>
   )
 }

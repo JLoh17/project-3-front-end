@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button'
 import { Form } from 'react-bootstrap'
 
 const Footer = () => (
-  <div className="footer-design">
+  <div className="footer-design mt-3">
     <div className="container-fluid">
       <h5>Come Find Us</h5>
       <p> 8/F, Cheung Hing Industrial Building, Kennedy Town, HK</p>

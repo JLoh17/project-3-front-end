@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { OverlayTrigger, Popover } from 'react-bootstrap'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import { connect } from 'react-redux'
 
 import { authLogin } from '@/actions/auth'
@@ -27,7 +27,6 @@ const LoginPopover = ({ children, ...props }) => {
 
   return (
     <>
-      <ToastContainer />
       <OverlayTrigger
         trigger="click"
         placement="bottom"
