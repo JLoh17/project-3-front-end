@@ -83,7 +83,7 @@ const CartTable = ({ myCartState: { cart }, ...props }) => {
 
         <tbody>
           <tr>
-            <td colSpan="3" />
+            <td colSpan="4" />
             <td>
               <h4>Total:</h4>
             </td>
