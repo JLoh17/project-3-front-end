@@ -10,12 +10,14 @@ import Button from 'react-bootstrap/Button'
 
 import { getMyCart } from '@/actions/my/cart/index'
 
-const CartTable = ({ myCartState: { cart, isLoading }, ...props }) => {
+const CartTable = ({ myCartState: { cart }, ...props }) => {
   useEffect(() => {
     props.getMyCart()
   }, [])
 
-  const [quantity, setQuantity] = useState(1)
+  const handleChangeQuantity = (e, CartId) => {
+    console.log(e.target.value, CartId)
+  }
 
   // useEffect is componentDidMount and componentWillUpdate. Keep the [] as that is for componentWillUpdate.
   // Template for useEffect
@@ -27,6 +29,7 @@ const CartTable = ({ myCartState: { cart, isLoading }, ...props }) => {
         <thead>
           <tr>
             <th colSpan="2" />
+            <th>Size</th>
             <th>Unit Cost</th>
             <th>Quantity</th>
             <th>Subtotal</th>
@@ -37,29 +40,38 @@ const CartTable = ({ myCartState: { cart, isLoading }, ...props }) => {
           {
             cart.map((item) => (
               <tr>
-                <td>
-                  <Image src={item.Product.Images?.[0]?.imageURL} className="pic-resize" />
-                </td>
+                <td><Image src={item.Product.Images?.[0]?.imageURL} className="pic-resize" /></td>
                 <td>{item.Product.productName}</td>
-                <td>{item.Product.price.toLocaleString('en-HK', {
-                  style: 'currency',
-                  currency: 'HKD'
-                })}
+                <td>{item.size}</td>
+                <td>
+                  {
+                    item.Product.price.toLocaleString('en-HK', {
+                      style: 'currency',
+                      currency: 'HKD'
+                    })
+                  }
                 </td>
                 <td>
-                  <Form>
-                    <Form.Control as="select" aria-label="quantity" name="quantity" onChange={(e) => setQuantity(e, item.quantity)}>
-                      <option value="Quantity-1">1</option>
-                      <option value="Quantity-2">2</option>
-                      <option value="Quantity-3">3</option>
-                      <option value="Quantity-4">4</option>
-                      <option value="Quantity-5">5</option>
-                    </Form.Control>
-                  </Form>
+                  <Form.Control as="select" aria-label="quantity" name="quantity" onChange={(e) => handleChangeQuantity(e, item.id)}>
+                    {
+                      [...Array(3)].map((_, i) => { // Loops to how many options you want in the selector
+                        const key = i
+                        const value = i + 1
+                        return (
+                          <option key={key} selected={item.quantity === value} value={value}>{value}</option> // If item.quantity === the value, then that will be the selected
+                        )
+                      })
+                    }
+                  </Form.Control>
                 </td>
-                <td>{(item.Product.price * item.quantity).toLocaleString('en-HK', {
-                  style: 'currency',
-                  currency: 'HKD' })}</td>
+                <td>
+                  {
+                    (item.Product.price * item.quantity).toLocaleString('en-HK', {
+                      style: 'currency',
+                      currency: 'HKD'
+                    })
+                  }
+                </td>
                 <td>
                   <div className="fas fa-trash-alt trashBtn"> Remove</div>
                 </td>
