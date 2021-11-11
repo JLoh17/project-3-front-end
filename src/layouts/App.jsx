@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { ToastContainer } from 'react-toastify'
 
 import { getMyProfile } from '@/actions/my/profile'
 
@@ -64,6 +65,7 @@ const App = (props) => {
           <div>Loading</div>
         )
       }
+      <ToastContainer />
     </Router>
   )
 }

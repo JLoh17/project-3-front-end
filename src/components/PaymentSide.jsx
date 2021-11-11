@@ -29,6 +29,7 @@ const CompPaymentSide = ({ myOrderState: { orderDetails, isLoading }, match, ...
       </div>
     )
   }
+
   if (!orderDetails) return <div>There is no such order</div>
   return (
     <div id="comps-checkout-side">

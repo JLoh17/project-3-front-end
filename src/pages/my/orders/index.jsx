@@ -64,13 +64,18 @@ class MyOrdersIndex extends React.Component {
                 <td onClick={() => this.orderShow(order.id)}>{order.createdAt.slice(0, 10)}</td>
                 <td onClick={() => this.orderShow(order.id)}>
                   {order.id}</td>
-                <td onClick={() => this.orderShow(order.id)}>{order.grandTotal.toLocaleString('en-HK', {
-                  style: 'currency',
-                  currency: 'HKD' })}</td>
+                <td onClick={() => this.orderShow(order.id)}>
+                  {
+                    order.grandTotal.toLocaleString('en-HK', {
+                      style: 'currency',
+                      currency: 'HKD'
+                    })
+                  }
+                </td>
                 <td onClick={() => this.orderShow(order.id)}>{order.status}</td>
                 <td>
                   {
-                    order.status === 'Pending Payment' ? (
+                    order.status === 'Pending-Payment' ? (
                       <>
                         {/* TODO */}
                         <span className="click-auto fas fa-trash-alt" onClick>Cancel</span>
@@ -94,7 +99,7 @@ class MyOrdersIndex extends React.Component {
 
 MyOrdersIndex.propTypes = {
   getOrdersIndex: PropTypes.func.isRequired,
-  orderIndex: PropTypes.func.isRequired,
+  orderIndex: PropTypes.shape().isRequired,
   history: PropTypes.shape().isRequired
 }
 

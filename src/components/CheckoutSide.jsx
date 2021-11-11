@@ -28,6 +28,7 @@ const CompsCheckoutSide = ({ myCartState: { cart, isLoading }, ...props }) => {
             <th>Item</th>
             <th>Price</th>
             <th>Quantity</th>
+            <th>Size</th>
             <th>Subtotal</th>
           </tr>
         </thead>
@@ -40,6 +41,7 @@ const CompsCheckoutSide = ({ myCartState: { cart, isLoading }, ...props }) => {
                 <td>{item.Product.productName}</td>
                 <td className="text-right">$ {item.Product.price}</td>
                 <td className="text-center">{item.quantity}</td>
+                <td className="text-center">{item.size}</td>
                 <td className="text-right">$ {item.quantity * item.Product.price}</td>
               </tr>
             ))

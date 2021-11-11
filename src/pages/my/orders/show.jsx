@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import { connect } from 'react-redux'
-// import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 
 import FormsConfirmCheckout from '@/forms/confirm-checkout'
 import CompsPaymentSide from '@/components/PaymentSide'
@@ -21,7 +21,7 @@ const MyOrdersShow = ({ orderStatus: { orderDetails }, currentUser, match, ...pr
       push('/my/orders/')
     }).catch(() => {
       methods.setSubmitting(false)
-      toast.error('Error to submit, please try again', {
+      toast.error('Error to pay, please try again', {
         position: 'bottom-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -36,7 +36,7 @@ const MyOrdersShow = ({ orderStatus: { orderDetails }, currentUser, match, ...pr
 
   if (orderDetails.status === 'Pending-Payment') {
     return (
-      <>
+      <div id="orders-show" className="container">
         <header className="text-center border-bottom">
           <h1>PAYMENT</h1>
         </header>
@@ -52,7 +52,8 @@ const MyOrdersShow = ({ orderStatus: { orderDetails }, currentUser, match, ...pr
           </div>
           <ToastContainer />
         </div>
-      </>
+      </div>
+
     )
   }
 
@@ -107,7 +108,6 @@ MyOrdersShow.propTypes = {
   orderStatus: PropTypes.shape().isRequired,
   getMyOrdersShow: PropTypes.func.isRequired,
   match: PropTypes.shape().isRequired
-
 }
 
 const mapStateToProps = (state) => ({
