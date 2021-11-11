@@ -1,25 +1,48 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import CartTable from '@/components/CartTable'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-import Table from 'react-bootstrap/Table'
+import { getMyCart } from '@/actions/my/cart/index'
 
-const MyCart = () => (
-  <div id="my-cart" className="container">
-    <header className="text-center border-bottom">
-      <h1>MY CART </h1>
-    </header>
+const MyCart = ({ myCartState: { cart }, ...props }) => {
+  useEffect(() => {
+    props.getMyCart()
+  }, [])
 
+  return (
+    <div id="my-cart" className="container">
+      <header className="text-center border-bottom">
+        <h1>My Cart</h1>
+      </header>
 
-    {/* If customer does not have a cart, show "Shopping Cart is empty", otherwise show the 2nd one */}
-    <div className="my-3 text-center">
-      <div> Your shopping cart is currently empty.</div>
-      <div> <Link to="/products"> View Products </Link></div>
+      {
+      (cart.length === 0) ? (
+        <div className="my-3 text-center">
+          <div> Your shopping cart is currently empty.</div>
+          <div> <Link to="/products"> View Products </Link></div>
+        </div>
+      ) : (
+        <CartTable />
+      )
+      }
     </div>
+  )
+}
 
-    <CartTable />
+MyCart.propTypes = {
+  myCartState: PropTypes.shape().isRequired,
+  getMyCart: PropTypes.func.isRequired
+}
 
-  </div>
-)
+const mapStateToProps = (state) => ({
+  myCartState: state.myCart
+})
 
-export default MyCart
+const mapDispatchToProps = {
+  getMyCart
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyCart)
