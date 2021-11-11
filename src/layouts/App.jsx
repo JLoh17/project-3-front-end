@@ -8,6 +8,9 @@ import { getMyProfile } from '@/actions/my/profile'
 
 import Breadcrumb from '@/components/Breadcrumb'
 import PrivateRoute from '@/components/PrivateRoute'
+import CompLoading from '@/components/Loading'
+// import CompsLeftSidebar from '@/components/LeftSideBar'
+import Footer from '@/components/Footer'
 
 import LayoutsNavbar from '@/layouts/Navbar'
 
@@ -42,27 +45,33 @@ const App = (props) => {
           <>
             <LayoutsNavbar />
             <Breadcrumb />
+            <div className="d-flex justify-content-around">
+              {/* <CompsLeftSidebar /> */}
+              <Switch>
+                <Route exact path="/" component={PagesHome} />
 
-            <Switch>
-              <Route exact path="/" component={PagesHome} />
+                <Route exact path="/products" component={ProductIndex} />
+                <Route exact path="/products/:id" component={ProductShow} />
 
-              <Route exact path="/products" component={ProductIndex} />
-              <Route exact path="/products/:id" component={ProductShow} />
+                <PrivateRoute exact path="/my/cart" component={MyCart} />
+                <PrivateRoute exact path="/my/profile" component={MyProfile} />
 
-              <PrivateRoute exact path="/my/cart" component={MyCart} />
-              <PrivateRoute exact path="/my/profile" component={MyProfile} />
+                <PrivateRoute exact path="/my/orders" component={MyOrdersIndex} />
+                <PrivateRoute exact path="/my/orders/new" component={MyOrdersNew} />
+                <PrivateRoute exact path="/my/orders/:id" component={MyOrdersShow} />
 
-              <PrivateRoute exact path="/my/orders" component={MyOrdersIndex} />
-              <PrivateRoute exact path="/my/orders/new" component={MyOrdersNew} />
-              <PrivateRoute exact path="/my/orders/:id" component={MyOrdersShow} />
+                <PrivateRoute exact path="/admin/orders" component={AdminOrders} />
 
-              <PrivateRoute exact path="/admin/orders" component={AdminOrders} />
+                <Route component={PagesNotFound} />
+              </Switch>
+            </div>
+            <Footer />
 
-              <Route component={PagesNotFound} />
-            </Switch>
           </>
         ) : (
-          <div>Loading</div>
+          <div className="container my-3">
+            <CompLoading />
+          </div>
         )
       }
       <ToastContainer />

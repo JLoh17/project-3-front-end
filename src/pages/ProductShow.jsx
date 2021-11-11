@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import CompCarousel from '@/components/Carousel'
-import Footer from '@/components/Footer'
 import CompProductSelector from '@/components/ProductSelector'
 import CompLoading from '@/components/Loading'
+import CompsLeftSidebar from '@/components/LeftSideBar'
 
 import { getProductShow } from '@/actions/product/show'
 
@@ -29,19 +29,19 @@ const ProductShow = (props) => {
   if (!product) return null
 
   return (
-    <>
+    <div className="container d-flex justify-content-between ml-0">
+      <CompsLeftSidebar />
       <div id="product-show" className="container my-3">
         <header className="text-center border-bottom">
           <h3>{product.Category.catName}</h3>
           <div><Link to={`/products?catName=${product.Category.id}`}>Back to {product.Category.catName}</Link></div>
         </header>
-        <div className="d-flex">
+        <div className="d-flex justify-content-center">
           <CompCarousel images={product.Images} />
           <CompProductSelector product={product} currentUser={currentUser} />
         </div>
       </div>
-      <Footer />
-    </>
+    </div>
   )
 }
 

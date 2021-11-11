@@ -7,7 +7,7 @@ const Breadcrumb = (props) => {
   const { history, location: { pathname } } = props
 
   const pathNames = pathname.split('/').filter((x) => x)
-  const productPathNames = pathname.split('/products').filter((x) => x)
+  // const productPathNames = pathname.split('/products').filter((x) => x)
 
   return (
     <div role="presentation">

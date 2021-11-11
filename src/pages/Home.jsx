@@ -4,8 +4,6 @@ import Card from 'react-bootstrap/Card'
 import CardGroup from 'react-bootstrap/CardGroup'
 import Button from 'react-bootstrap/Button'
 
-import Footer from '@/components/Footer'
-
 const categories = [
   {
     id: '1',
@@ -58,7 +56,6 @@ class PagesHome extends React.Component {
             </CardGroup>
           </div>
         </div>
-        <Footer />
       </>
     )
   }
