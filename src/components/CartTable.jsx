@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -8,7 +8,7 @@ import Image from 'react-bootstrap/Image'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-import { getMyCart } from '@/actions/my/cart/index'
+import { getMyCart, updateCartQuantity } from '@/actions/my/cart/index'
 
 const CartTable = ({ myCartState: { cart }, ...props }) => {
   useEffect(() => {
@@ -16,7 +16,7 @@ const CartTable = ({ myCartState: { cart }, ...props }) => {
   }, [])
 
   const handleChangeQuantity = (e, CartId) => {
-    console.log(e.target.value, CartId)
+    props.updateCartQuantity({ quantity: e.target.value }, CartId)
   }
 
   // useEffect is componentDidMount and componentWillUpdate. Keep the [] as that is for componentWillUpdate.
@@ -108,8 +108,8 @@ const CartTable = ({ myCartState: { cart }, ...props }) => {
 
 CartTable.propTypes = {
   myCartState: PropTypes.shape().isRequired,
-  getMyCart: PropTypes.func.isRequired
-
+  getMyCart: PropTypes.func.isRequired,
+  updateCartQuantity: PropTypes.shape().isRequired
 }
 
 const mapStateToProps = (state) => ({
@@ -117,7 +117,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  getMyCart
+  getMyCart,
+  updateCartQuantity
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartTable)

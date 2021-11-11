@@ -22,3 +22,21 @@ export const getMyCart = () => (dispatch) => {
     dispatch(loading(GET_MY_CART, { loading: false }))
   })
 }
+
+export const EDIT_CART_QUANTITY = 'EDIT_CART_QUANTITY'
+export const editCartQuantity = (payload) => ({ type: EDIT_CART_QUANTITY, payload })
+
+export const UPDATE_CART_QUANTITY = 'UPDATE_CART_QUANTITY'
+export const updateCartQuantity = (values, CartId) => (dispatch) => {
+  dispatch(loading(UPDATE_CART_QUANTITY, { loading: true }))
+  axios({
+    method: 'PUT',
+    url: `${process.env.API_DOMAIN}/api/my/cart/${CartId}`,
+    data: values,
+    withCredentials: true
+  }).then((resp) => {
+    dispatch(editCartQuantity(resp.data))
+  }).finally(() => {
+    dispatch(loading(UPDATE_CART_QUANTITY, { loading: false }))
+  })
+}

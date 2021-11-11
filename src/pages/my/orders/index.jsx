@@ -70,7 +70,7 @@ class MyOrdersIndex extends React.Component {
                 <td onClick={() => this.orderShow(order.id)}>{order.status}</td>
                 <td>
                   {
-                    order.status === 'Pending Payment' ? (
+                    order.status === 'Pending-Payment' ? (
                       <>
                         {/* TODO */}
                         <span className="click-auto fas fa-trash-alt" onClick>Cancel</span>
@@ -94,7 +94,7 @@ class MyOrdersIndex extends React.Component {
 
 MyOrdersIndex.propTypes = {
   getOrdersIndex: PropTypes.func.isRequired,
-  orderIndex: PropTypes.func.isRequired,
+  orderIndex: PropTypes.shape().isRequired,
   history: PropTypes.shape().isRequired
 }
 
