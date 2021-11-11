@@ -8,14 +8,11 @@ const CompsLeftSidebar = (props) => {
   const { history, location } = props
 
   return (
-
-    <div className="d-flex flex-column align-items-start col-3 mt-5 w-20">
+    <div id="left-sidebar" className="d-flex flex-column align-items-start col-3 mt-5 w-20">
       <div className="">
-        <span>
-          <h4>
-            Categories
-          </h4>
-        </span>
+        <h4 id="side-bar-category-title">
+          Categories
+        </h4>
       </div>
       {/* <div><Link to="/products?catName=1">{'Men\'s Tops'}</Link></div>
       <div><Link to="/products?catName=2">{'Men\'s Shoes'}</Link></div>

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Form } from 'react-bootstrap'
 
 const MyProfile = () => (
   <div id="my-profile" className="container">
@@ -12,11 +11,6 @@ const MyProfile = () => (
       <div><Link to="/admin/orders">My Admin Orders</Link></div>
     </header>
 
-    <Form>
-  <Form.Group controlId="exampleForm.ControlInput1">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" placeholder="name@example.com" />
-  </Form.Group>
   </div>
 )
 

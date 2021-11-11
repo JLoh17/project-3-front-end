@@ -7,15 +7,15 @@ import Button from 'react-bootstrap/Button'
 const categories = [
   {
     id: '1',
-    name: 'Men\'s Tops',
+    name: 'MEN\'S TOPS',
     src: 'https://cdn.shopify.com/s/files/1/0543/4454/8549/files/MG_2317STEFAN-VAN-RUIJVEN-FOTOGRAFIE---OUTRGS-MEN_S-FASHION_1800x.jpg?v=1621854112'
   }, {
     id: '2',
-    name: 'Men\'s Shoes',
+    name: 'MEN\'S SHOES',
     src: 'https://modone.com/eng_pl_Mens-shoes-T326-brown-14029_7.jpg'
   }, {
     id: '3',
-    name: 'Men\'s Hats',
+    name: 'MEN\'S HATS',
     src: 'https://i.pinimg.com/736x/04/b3/3f/04b33f8059ce671b3569b7c4bb28f7a3--men-hats-fedora-mens-hats.jpg'
   }
 ]
@@ -37,8 +37,8 @@ class PagesHome extends React.Component {
       <>
         <div id="pages-home" className="container-fluid m-1">
           <header className="text-center border-bottom my-3">
-            <h1>From Head to Toe</h1>
-            <h6>Men&apos;s fashion</h6>
+            <h1>FROM HEAD TO TOE</h1>
+            <h3>Men&apos;s Fashion</h3>
           </header>
 
           <div className="d-flex justify-content-around my-3">

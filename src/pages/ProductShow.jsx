@@ -33,12 +33,17 @@ const ProductShow = (props) => {
       <CompsLeftSidebar />
       <div id="product-show" className="container my-3">
         <header className="text-center border-bottom">
-          <h3>{product.Category.catName}</h3>
+          <h3 className="category-title">{product.Category.catName}</h3>
           <div><Link to={`/products?catName=${product.Category.id}`}>Back to {product.Category.catName}</Link></div>
         </header>
         <div className="d-flex justify-content-center">
-          <CompCarousel images={product.Images} />
-          <CompProductSelector product={product} currentUser={currentUser} />
+          <div className="row">
+            <CompCarousel images={product.Images} />
+          </div>
+          <div className="row">
+            <CompProductSelector product={product} currentUser={currentUser} />
+
+          </div>
         </div>
       </div>
     </div>

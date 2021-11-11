@@ -37,7 +37,7 @@ class MyOrdersIndex extends React.Component {
 
   // TODO - Pagination is necessary for my-orders as could have many
   render() {
-    const { orderIndex: { listOrder, meta, isLoading } } = this.props
+    const { orderIndex: { listOrder } } = this.props
 
     return (
       <div id="my-orders-index" className="container">
