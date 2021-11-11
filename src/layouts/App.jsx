@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify'
 
 import { getMyProfile } from '@/actions/my/profile'
 
-import Breadcrumb from '@/components/Breadcrumb'
+// import Breadcrumb from '@/components/Breadcrumb'
 import PrivateRoute from '@/components/PrivateRoute'
 import CompLoading from '@/components/Loading'
 // import CompsLeftSidebar from '@/components/LeftSideBar'
@@ -44,7 +44,7 @@ const App = (props) => {
         loaded ? (
           <>
             <LayoutsNavbar />
-            <Breadcrumb />
+            {/* <Breadcrumb /> */}
             <div className="d-flex justify-content-around">
               {/* <CompsLeftSidebar /> */}
               <Switch>

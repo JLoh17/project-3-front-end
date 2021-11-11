@@ -122,7 +122,7 @@ class ProductIndex extends React.Component {
 
         <div id="product-index" className="container">
           <header className="text-center mb-3">
-            <h1>{meta?.catName || 'Products'}</h1>
+            <h1 className="category-title">{meta?.catName || 'Products'}</h1>
           </header>
           { this.renderIndex()}
         </div>

@@ -36,7 +36,7 @@ module.exports = {
           'sass-loader'
         ]
       }, {
-        test: /\.(woff(2)?|ttf|eot|svg|gif)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(woff(2)?|ttf|eot|png|jpg|svg|gif)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
             loader: 'file-loader',
@@ -52,6 +52,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env.API_DOMAIN': JSON.stringify('http://localhost:3000')
+      // 'process.env.PUBLIC_URL': JSON.stringify('http://localhost:8080')
     }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({

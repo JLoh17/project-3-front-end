@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import SearchSort from '@/components/SearchSort'
 import Table from 'react-bootstrap/Table'
 
-import { getOrdersIndex } from '@/actions/my/orders/index'
+import { getOrdersIndex, destroyMyOrder } from '@/actions/my/orders/index'
 
 class MyOrdersIndex extends React.Component {
   constructor(props) {
@@ -37,7 +37,7 @@ class MyOrdersIndex extends React.Component {
 
   // TODO - Pagination is necessary for my-orders as could have many
   render() {
-    const { orderIndex: { listOrder, meta, isLoading } } = this.props
+    const { orderIndex: { listOrder } } = this.props
 
     return (
       <div id="my-orders-index" className="container">
@@ -78,7 +78,7 @@ class MyOrdersIndex extends React.Component {
                     order.status === 'Pending-Payment' ? (
                       <>
                         {/* TODO */}
-                        <span className="click-auto fas fa-trash-alt" onClick>Cancel</span>
+                        <span className="click-auto fas fa-trash-alt" onClick={() => this.handleDeleteClick()}>Cancel</span>
                         {/* <span className="click-auto fas fa-clone" onClick>Duplicate Order</span> */}
                       </>
                     ) : (
@@ -101,7 +101,8 @@ class MyOrdersIndex extends React.Component {
 MyOrdersIndex.propTypes = {
   getOrdersIndex: PropTypes.func.isRequired,
   orderIndex: PropTypes.shape().isRequired,
-  history: PropTypes.shape().isRequired
+  history: PropTypes.shape().isRequired,
+  destroyMyOrder: PropTypes.shape().isRequired
 }
 
 const mapStateToProps = (state) => ({
@@ -109,7 +110,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  getOrdersIndex
+  getOrdersIndex,
+  destroyMyOrder
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyOrdersIndex)

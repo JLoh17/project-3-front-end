@@ -19,8 +19,7 @@ const Breadcrumb = (props) => {
           pathNames.map((name, index) => {
             const isLast = index === pathNames.length - 1
             // const to = `/${pathNames.slice(0, index + 1).join('/')}`
-            console.log('pathnames:', pathNames)
-            console.log('history:', history)
+
             return isLast ? (
               <Typography key={name}>{name} </Typography>
             ) : (

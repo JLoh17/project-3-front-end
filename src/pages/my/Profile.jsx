@@ -69,6 +69,7 @@ const MyProfile = () => (
         </div>
       </div>
     </body>
+
   </div>
 )
 

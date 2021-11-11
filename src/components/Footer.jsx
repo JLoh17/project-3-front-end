@@ -14,12 +14,12 @@ const Footer = () => (
         <span className="fab fa-instagram-square" />
       </div>
 
-      <h5>Subscribe to our news letter</h5>
+      <h5>Subscribe to our Newsletter</h5>
       <Form className="form-inline ms-0 mb-3">
         <Form.Group controlId="formBasicEmail">
           <div>
             <Form.Control type="email" placeholder="Enter email" />
-            <Button variant="info" disabled>
+            <Button variant="info">
               Subscribe
             </Button>
           </div>
