@@ -4,11 +4,10 @@ import PropTypes from 'prop-types'
 import Card from 'react-bootstrap/Card'
 import { connect } from 'react-redux'
 
-import Footer from '@/components/Footer'
-
 import Skeleton from 'react-loading-skeleton'
 
 import { getProductList } from '@/actions/product/index'
+import CompsLeftSidebar from '@/components/LeftSideBar'
 
 // functional components cannot use lifecycle hooks
 // need to add truncate to className so the title doesn't go too big
@@ -118,16 +117,16 @@ class ProductIndex extends React.Component {
     const { productIndex: { meta } } = this.props
 
     return (
-      <>
+      <div className="container d-flex justify-content-between ml-0">
+        <CompsLeftSidebar />
+
         <div id="product-index" className="container">
           <header className="text-center mb-3">
             <h1>{meta?.catName || 'Products'}</h1>
           </header>
           { this.renderIndex()}
         </div>
-        <Footer />
-      </>
-
+      </div>
     )
   }
 }

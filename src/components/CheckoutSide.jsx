@@ -28,6 +28,7 @@ const CompsCheckoutSide = ({ myCartState: { cart, isLoading }, ...props }) => {
             <th>Item</th>
             <th>Price</th>
             <th>Quantity</th>
+            <th>Size</th>
             <th>Subtotal</th>
           </tr>
         </thead>
@@ -38,9 +39,18 @@ const CompsCheckoutSide = ({ myCartState: { cart, isLoading }, ...props }) => {
               <tr key={item.id}>
                 <td>{i + 1}</td>
                 <td>{item.Product.productName}</td>
-                <td className="text-right">$ {item.Product.price}</td>
+                <td className="text-right">{item.Product.price.toLocaleString('en-HK', {
+                  style: 'currency',
+                  currency: 'HKD'
+                })}</td>
                 <td className="text-center">{item.quantity}</td>
-                <td className="text-right">$ {item.quantity * item.Product.price}</td>
+                <td className="text-center">{item.size}</td>
+                <td className="text-right">{
+                (item.quantity * item.Product.price).toLocaleString('en-HK', {
+                  style: 'currency',
+                  currency: 'HKD'
+                })
+                }</td>
               </tr>
             ))
           }
@@ -49,7 +59,10 @@ const CompsCheckoutSide = ({ myCartState: { cart, isLoading }, ...props }) => {
       <div className="d-flex justify-content-end p-2">
         <h4><b> Total:</b></h4>
         <span>&nbsp;</span>
-        <span><h4><b>$ {cart.reduce((sum, item) => sum + (item.Product.price * item.quantity), 0)}</b></h4></span>
+        <span><h4><b>{cart.reduce((sum, item) => sum + (item.Product.price * item.quantity), 0).toLocaleString('en-HK', {
+          style: 'currency',
+          currency: 'HKD'
+        })}</b></h4></span>
       </div>
     </div>
   )

@@ -2,17 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { connect } from 'react-redux'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 import FormsDeliveryDetails from '@/forms/delivery-details'
 import CompsCheckoutSide from '@/components/CheckoutSide'
 
 import { createMyOrder } from '@/actions/my/orders/new'
 
-const MyOrdersNew = ({ currentUser, ...props }) => {
+const MyOrdersNew = ({ currentUser, myCartState: { cart }, ...props }) => {
   const handleCreateNewOrder = (values, methods) => {
     const { history: { push } } = props
-    props.createMyOrder(values).then((resp) => {
+    const newValues = {
+      ...values,
+      grandTotal: cart.reduce((sum, item) => sum + (item.Product.price * item.quantity), 0)
+    }
+    props.createMyOrder(newValues).then((resp) => {
       push(`/my/orders/${resp.data.order.id}`)
     }).catch(() => {
       methods.setSubmitting(false)
@@ -43,7 +47,6 @@ const MyOrdersNew = ({ currentUser, ...props }) => {
         <div className="col-12 col-lg-6">
           <CompsCheckoutSide />
         </div>
-        <ToastContainer />
       </div>
     </div>
   )
@@ -52,11 +55,13 @@ const MyOrdersNew = ({ currentUser, ...props }) => {
 MyOrdersNew.propTypes = {
   createMyOrder: PropTypes.func.isRequired,
   currentUser: PropTypes.shape().isRequired,
-  history: PropTypes.shape().isRequired
+  history: PropTypes.shape().isRequired,
+  myCartState: PropTypes.shape().isRequired
 }
 
 const mapStateToProps = (state) => ({
-  currentUser: state.currentUser.currentUser
+  currentUser: state.currentUser.currentUser,
+  myCartState: state.myCart
 })
 
 const mapDispatchToProps = {
