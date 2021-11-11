@@ -2,9 +2,10 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import { connect } from 'react-redux'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 import FormsConfirmCheckout from '@/forms/confirm-checkout'
+import FormsPayment from '@/forms/payment'
 import CompsPaymentSide from '@/components/PaymentSide'
 
 import { payMyOrder } from '@/actions/my/orders/pay'
@@ -50,7 +51,6 @@ const MyOrdersShow = ({ orderStatus: { orderDetails }, currentUser, match, ...pr
           <div className="col-12 col-lg-6">
             <CompsPaymentSide />
           </div>
-          <ToastContainer />
         </div>
       </div>
 
@@ -59,13 +59,13 @@ const MyOrdersShow = ({ orderStatus: { orderDetails }, currentUser, match, ...pr
 
   if (orderDetails.status === 'Pending-Delivery') {
     return (
-      <>
+      <div id="orders-pending-delivery" className="container">
         <header className="text-center border-bottom">
           <h1>ORDER {orderDetails.id}</h1>
         </header>
         <div className="row">
           <div className="col-12 col-lg-6">
-            <FormsConfirmCheckout
+            <FormsPayment
               initialValues={orderDetails || {}}
               onSubmit="disabled"
             />
@@ -73,9 +73,8 @@ const MyOrdersShow = ({ orderStatus: { orderDetails }, currentUser, match, ...pr
           <div className="col-12 col-lg-6">
             <CompsPaymentSide />
           </div>
-          <ToastContainer />
         </div>
-      </>
+      </div>
     )
   }
 

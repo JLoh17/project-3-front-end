@@ -79,10 +79,11 @@ class MyOrdersIndex extends React.Component {
                       <>
                         {/* TODO */}
                         <span className="click-auto fas fa-trash-alt" onClick>Cancel</span>
-                        <span className="click-auto fas fa-clone" onClick>Duplicate Order</span>
+                        {/* <span className="click-auto fas fa-clone" onClick>Duplicate Order</span> */}
                       </>
                     ) : (
-                      <span className="click-auto fas fa-clone" onClick>Duplicate Order</span>
+                      // <span className="click-auto fas fa-clone" onClick>Duplicate Order</span>
+                      <span />
                     )
                   }
                 </td>
