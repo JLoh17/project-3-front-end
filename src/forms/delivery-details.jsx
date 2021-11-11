@@ -81,7 +81,7 @@ RenderForm.propTypes = {
 const deliveryDetailsSchema = yup.object().shape({
   firstName: yup.string().required('Field is Required'),
   lastName: yup.string().required('Field is Required'),
-  telephone: yup.number().required('Field is Required'),
+  telephone: yup.string().required('Field is Required'),
   address: yup.string().required('Field is Required'),
   saveAsDefaultAddress: yup.boolean()
 })

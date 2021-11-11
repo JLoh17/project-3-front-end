@@ -67,7 +67,7 @@ RenderForm.propTypes = {
 const confirmCheckoutSchema = yup.object().shape({
   firstName: yup.string().required('Field is Required'),
   lastName: yup.string().required('Field is Required'),
-  telephone: yup.number().required('Field is Required'),
+  telephone: yup.string().required('Field is Required'),
   deliveryAddress: yup.string().required('Field is Required'),
   saveAsDefaultAddress: yup.boolean()
 })
