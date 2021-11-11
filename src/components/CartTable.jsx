@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -8,14 +8,16 @@ import Image from 'react-bootstrap/Image'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-import { getMyCart } from '@/actions/my/cart/index'
+import { getMyCart, updateCartQuantity } from '@/actions/my/cart/index'
 
-const CartTable = ({ myCartState: { cart, isLoading }, ...props }) => {
+const CartTable = ({ myCartState: { cart }, ...props }) => {
   useEffect(() => {
     props.getMyCart()
   }, [])
 
-  const [quantity, setQuantity] = useState(1)
+  const handleChangeQuantity = (e, CartId) => {
+    props.updateCartQuantity({ quantity: e.target.value }, CartId)
+  }
 
   // useEffect is componentDidMount and componentWillUpdate. Keep the [] as that is for componentWillUpdate.
   // Template for useEffect
@@ -27,6 +29,7 @@ const CartTable = ({ myCartState: { cart, isLoading }, ...props }) => {
         <thead>
           <tr>
             <th colSpan="2" />
+            <th>Size</th>
             <th>Unit Cost</th>
             <th>Quantity</th>
             <th>Subtotal</th>
@@ -37,29 +40,38 @@ const CartTable = ({ myCartState: { cart, isLoading }, ...props }) => {
           {
             cart.map((item) => (
               <tr>
-                <td>
-                  <Image src={item.Product.Images?.[0]?.imageURL} className="pic-resize" />
-                </td>
+                <td><Image src={item.Product.Images?.[0]?.imageURL} className="pic-resize" /></td>
                 <td>{item.Product.productName}</td>
-                <td>{item.Product.price.toLocaleString('en-HK', {
-                  style: 'currency',
-                  currency: 'HKD'
-                })}
+                <td>{item.size}</td>
+                <td>
+                  {
+                    item.Product.price.toLocaleString('en-HK', {
+                      style: 'currency',
+                      currency: 'HKD'
+                    })
+                  }
                 </td>
                 <td>
-                  <Form>
-                    <Form.Control as="select" aria-label="quantity" name="quantity" onChange={(e) => setQuantity(e, item.quantity)}>
-                      <option value="Quantity-1">1</option>
-                      <option value="Quantity-2">2</option>
-                      <option value="Quantity-3">3</option>
-                      <option value="Quantity-4">4</option>
-                      <option value="Quantity-5">5</option>
-                    </Form.Control>
-                  </Form>
+                  <Form.Control as="select" aria-label="quantity" name="quantity" onChange={(e) => handleChangeQuantity(e, item.id)}>
+                    {
+                      [...Array(3)].map((_, i) => { // Loops to how many options you want in the selector
+                        const key = i
+                        const value = i + 1
+                        return (
+                          <option key={key} selected={item.quantity === value} value={value}>{value}</option> // If item.quantity === the value, then that will be the selected
+                        )
+                      })
+                    }
+                  </Form.Control>
                 </td>
-                <td>{(item.Product.price * item.quantity).toLocaleString('en-HK', {
-                  style: 'currency',
-                  currency: 'HKD' })}</td>
+                <td>
+                  {
+                    (item.Product.price * item.quantity).toLocaleString('en-HK', {
+                      style: 'currency',
+                      currency: 'HKD'
+                    })
+                  }
+                </td>
                 <td>
                   <div className="fas fa-trash-alt trashBtn"> Remove</div>
                 </td>
@@ -71,7 +83,7 @@ const CartTable = ({ myCartState: { cart, isLoading }, ...props }) => {
 
         <tbody>
           <tr>
-            <td colSpan="3" />
+            <td colSpan="4" />
             <td>
               <h4>Total:</h4>
             </td>
@@ -96,8 +108,8 @@ const CartTable = ({ myCartState: { cart, isLoading }, ...props }) => {
 
 CartTable.propTypes = {
   myCartState: PropTypes.shape().isRequired,
-  getMyCart: PropTypes.func.isRequired
-
+  getMyCart: PropTypes.func.isRequired,
+  updateCartQuantity: PropTypes.shape().isRequired
 }
 
 const mapStateToProps = (state) => ({
@@ -105,7 +117,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  getMyCart
+  getMyCart,
+  updateCartQuantity
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartTable)

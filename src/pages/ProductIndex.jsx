@@ -1,4 +1,5 @@
 import React from 'react'
+import qs from 'query-string'
 import PropTypes from 'prop-types'
 import Card from 'react-bootstrap/Card'
 import { connect } from 'react-redux'
@@ -81,24 +82,23 @@ class ProductIndex extends React.Component {
       <>
         <div className="row mb-3">
           {
-          list.map((product) => (
-            <Card
-              key={product.id}
-              className="col-6 col-md-3 p-0"
-              onClick={() => this.productShow(product.id)}
-            >
-              <Card.Img variant="top" src={product.Images?.[0]?.imageURL} />
-              <Card.Body>
-                <Card.Title>{product.productName}</Card.Title>
-                <Card.Text>{product.price.toLocaleString('en-HK', {
-                  style: 'currency',
-                  currency: 'HKD'
-                })}</Card.Text>
-              </Card.Body>
-            </Card>
-          ))
-        }
-
+            list.map((product) => (
+              <Card
+                key={product.id}
+                className="col-6 col-md-3 p-0"
+                onClick={() => this.productShow(product.id)}
+              >
+                <Card.Img variant="top" src={product.Images?.[0]?.imageURL} />
+                <Card.Body>
+                  <Card.Title>{product.productName}</Card.Title>
+                  <Card.Text>{product.price.toLocaleString('en-HK', {
+                    style: 'currency',
+                    currency: 'HKD'
+                  })}</Card.Text>
+                </Card.Body>
+              </Card>
+            ))
+          }
         </div>
 
         <div className="d-flex justify-content-center">
@@ -114,16 +114,16 @@ class ProductIndex extends React.Component {
   }
 
   render() {
-    // const { productIndex: { list, product } = this.props
+    const { productIndex: { meta } } = this.props
+
     return (
       <div className="container d-flex justify-content-between ml-0">
         <CompsLeftSidebar />
 
         <div id="product-index" className="container">
           <header className="text-center mb-3">
-            <h1>Category</h1>
+            <h1>{meta?.catName || 'Products'}</h1>
           </header>
-
           { this.renderIndex()}
         </div>
       </div>

@@ -62,10 +62,10 @@ class LayoutsNavbar extends React.Component {
       return (
         <>
           <Nav className="ml-auto">
-            <Form inline>
+            {/* <Form inline>
               <FormControl type="text" placeholder="Search" className="mr-sm-2" />
               <Button variant="outline-success">Search</Button>
-            </Form>
+            </Form> */}
             <NavDropdown alignRight title={<span><i className="fas fa-user-check" /> My Profile</span>}>
               <NavDropdown.Item as={NavLink} to="/my/profile">Edit My Profile</NavDropdown.Item>
               <NavDropdown.Item as={NavLink} to="/my/orders">My Order History</NavDropdown.Item>
