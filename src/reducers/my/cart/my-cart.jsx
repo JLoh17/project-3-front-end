@@ -4,7 +4,9 @@ import {
   SET_MY_CART,
   GET_MY_CART,
   EDIT_CART_QUANTITY,
-  UPDATE_CART_QUANTITY
+  UPDATE_CART_QUANTITY,
+  REMOVE_CART_ITEM,
+  DESTROY_CART_ITEM
 } from '@/actions/my/cart/index'
 
 import {
@@ -46,6 +48,17 @@ export default (state = initialState, action) => {
       })
     }
     case CREATE_CART_ITEM: {
+      return produce(state, (draft) => {
+        draft.isLoading = action.payload.loading
+      })
+    }
+    case REMOVE_CART_ITEM: {
+      return produce(state, (draft) => {
+        const index = draft.cart.findIndex((cart) => cart.id === action.payload.cart.id)
+        if (index !== -1) draft.cart[index].splice(index, 1)
+      })
+    }
+    case DESTROY_CART_ITEM: {
       return produce(state, (draft) => {
         draft.isLoading = action.payload.loading
       })
