@@ -26,10 +26,8 @@ class AdminOrders extends React.Component {
     this.props.getAdminOrdersIndex(this.state)
   }
 
-  handleChange(e) {
-    this.props.updateAdminOrderStatus(this.state)
-
-    console.log(e.target.value)
+  handleChange(e, OrderId) {
+    this.props.updateAdminOrderStatus({ status: e.target.value }, OrderId)
   }
 
   render() {
@@ -65,9 +63,14 @@ class AdminOrders extends React.Component {
                 })}</td>
                 <td>{order.status}</td>
                 <td>
-                  <Form.Control as="select" aria-label="status" name="status" onChange={this.handleChange}>
+                  {/* If just (e) then no need to type, but if want to pass something else as well, then need to add e. In this case we need to pass the order.id, which is generated from map. */}
+                  <Form.Control as="select" aria-label="status" name="status" onChange={(e) => this.handleChange(e, order.id)}>
+
                     <option
                       defaultChecked
+                      value="none"
+                    >-</option>
+                    <option
                       value="Pending-Payment"
                     >Pending payment</option>
                     <option

@@ -1,4 +1,3 @@
-// TODO image size css
 import React from 'react'
 import PropTypes from 'prop-types'
 import Card from 'react-bootstrap/Card'
@@ -41,7 +40,7 @@ class PagesHome extends React.Component {
         <div id="pages-home" className="container-fluid m-1">
           <header className="text-center border-bottom my-3">
             <h1>From Head to Toe</h1>
-            <h6>Men&aps;s fashion</h6>
+            <h6>Men&apos;s fashion</h6>
           </header>
 
           <div className="d-flex justify-content-around my-3">
