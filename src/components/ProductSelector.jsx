@@ -34,9 +34,9 @@ const CompProductSelector = ({ product, currentUser, ...props }) => {
             <Form>
               <Form.Label as="h5">Size</Form.Label>
               <Form.Control onChange={(e) => setSize(e.target.value)} as="select" aria-label="size" name="size">
-                <option value="1">Small</option>
-                <option value="2">Medium</option>
-                <option value="3">Large</option>
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
               </Form.Control>
               <Form.Label as="h5" className="mt-2">Quantity</Form.Label>
               <Form.Control onChange={(e) => setQuantity(e.target.value)} as="select" aria-label="quantity" name="quantity">
