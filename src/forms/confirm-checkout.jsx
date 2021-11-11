@@ -45,15 +45,15 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
     </div>
 
     <div className="form-group">
-      <label htmlFor="address">Address</label>
+      <label htmlFor="deliveryAddress">Address</label>
       <Field
-        id="address"
-        className={`form-control ${(errors.address && touched.address ? ' is-invalid' : '')}`}
-        name="address"
+        id="deliveryAddress"
+        className={`form-control ${(errors.deliveryAddress && touched.deliveryAddress ? ' is-invalid' : '')}`}
+        name="deliveryAddress"
         type="text"
         disabled
       />
-      <ErrorMessage component="div" className="invalid-feedback" name="address" />
+      <ErrorMessage component="div" className="invalid-feedback" name="deliveryAddress" />
     </div>
 
     <div className="text-center">
@@ -72,7 +72,7 @@ const confirmCheckoutSchema = yup.object().shape({
   firstName: yup.string().required('Field is Required'),
   lastName: yup.string().required('Field is Required'),
   telephone: yup.number().required('Field is Required'),
-  address: yup.string().required('Field is Required'),
+  deliveryAddress: yup.string().required('Field is Required'),
   saveAsDefaultAddress: yup.boolean()
 })
 
