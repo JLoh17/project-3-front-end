@@ -44,7 +44,7 @@ const App = (props) => {
         loaded ? (
           <>
             <LayoutsNavbar />
-            <Breadcrumb />
+            {/* <Breadcrumb /> */}
             <div className="d-flex justify-content-around">
               {/* <CompsLeftSidebar /> */}
               <Switch>

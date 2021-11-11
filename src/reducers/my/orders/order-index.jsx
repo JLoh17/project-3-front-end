@@ -26,18 +26,16 @@ export default (state = initialState, action) => {
         draft.isLoading = action.payload.loading
       })
     }
-
-    // TODO
-    // case REMOVE_MY_ORDER: {
-    //   return produce(state, (draft) => {
-    //     draft
-    //   })
-    // }
-    // case DESTROY_MY_ORDER: {
-    //   return produce(state, (draft) => {
-    //     draft
-    //   })
-    // }
+    case REMOVE_MY_ORDER: {
+      return produce(state, (draft) => {
+        draft.listOrder = action.payload.order
+      })
+    }
+    case DESTROY_MY_ORDER: {
+      return produce(state, (draft) => {
+        draft.isLoading = action.payload.loading
+      })
+    }
     default: {
       return state
     }
