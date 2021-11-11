@@ -42,6 +42,7 @@
     "react/destructuring-assignment": 0,
     "react-redux/prefer-separate-component-file": 0,
     "react-hooks/exhaustive-deps": 0
+    // "linebreak-style": ["error", "windows"]
   },
   "settings": {
     "react": {
