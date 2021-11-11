@@ -40,3 +40,22 @@ export const updateCartQuantity = (values, CartId) => (dispatch) => {
     dispatch(loading(UPDATE_CART_QUANTITY, { loading: false }))
   })
 }
+
+export const REMOVE_CART_ITEM = 'REMOVE_CART_ITEM'
+export const removeCartItem = (payload) => ({ type: REMOVE_CART_ITEM, payload })
+export const DESTROY_CART_ITEM = 'DESTROY_CART_ITEM'
+export const destroyCartItem = (CartId) => (dispatch) => new Promise((resolve, reject) => {
+  dispatch(loading(DESTROY_CART_ITEM, { loading: true }))
+  axios({
+    method: 'DELETE',
+    url: `${process.env.API_DOMAIN}/api/my/cart/${CartId}`,
+    withCredentials: true
+  }).then((resp) => {
+    dispatch(removeCartItem(CartId))
+    resolve(resp)
+  }).catch((err) => {
+    reject(err)
+  }).finally(() => {
+    dispatch(loading(DESTROY_CART_ITEM, { loading: false, id: CartId }))
+  })
+})

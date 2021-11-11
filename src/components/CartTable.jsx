@@ -8,7 +8,7 @@ import Image from 'react-bootstrap/Image'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-import { getMyCart, updateCartQuantity } from '@/actions/my/cart/index'
+import { getMyCart, updateCartQuantity, destroyCartItem } from '@/actions/my/cart/index'
 
 const CartTable = ({ myCartState: { cart }, ...props }) => {
   useEffect(() => {
@@ -17,6 +17,10 @@ const CartTable = ({ myCartState: { cart }, ...props }) => {
 
   const handleChangeQuantity = (e, CartId) => {
     props.updateCartQuantity({ quantity: e.target.value }, CartId)
+  }
+
+  const deleteOrderClick = (CartId) => {
+    props.destroyCartItem(CartId)
   }
 
   // useEffect is componentDidMount and componentWillUpdate. Keep the [] as that is for componentWillUpdate.
@@ -73,7 +77,7 @@ const CartTable = ({ myCartState: { cart }, ...props }) => {
                   }
                 </td>
                 <td>
-                  <div className="fas fa-trash-alt trashBtn"> Remove</div>
+                  <div className="fas fa-trash-alt trashBtn" onClick={() => deleteOrderClick(item.id)}> Remove</div>
                 </td>
               </tr>
             ))
@@ -109,7 +113,8 @@ const CartTable = ({ myCartState: { cart }, ...props }) => {
 CartTable.propTypes = {
   myCartState: PropTypes.shape().isRequired,
   getMyCart: PropTypes.func.isRequired,
-  updateCartQuantity: PropTypes.shape().isRequired
+  updateCartQuantity: PropTypes.shape().isRequired,
+  destroyCartItem: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
@@ -118,7 +123,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   getMyCart,
-  updateCartQuantity
+  updateCartQuantity,
+  destroyCartItem
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartTable)
