@@ -8,6 +8,7 @@ import ReducersOrderIndex from '@/reducers/my/orders/order-index'
 import ReducersAdminOrderIndex from '@/reducers/admin/admin-order-index'
 import ReducersMyCart from '@/reducers/my/cart/my-cart'
 import ReducersOrderNew from '@/reducers/my/orders/order-new'
+import ReducersOrderShow from '@/reducers/my/orders/order-show'
 
 const createReducersRoot = (history) => combineReducers({
   currentUser: ReducersCurrentUser,
@@ -17,6 +18,7 @@ const createReducersRoot = (history) => combineReducers({
   adminOrderIndex: ReducersAdminOrderIndex,
   myCart: ReducersMyCart,
   orderNew: ReducersOrderNew,
+  orderShow: ReducersOrderShow,
   router: connectRouter(history)
 })
 

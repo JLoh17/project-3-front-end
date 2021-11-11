@@ -6,7 +6,7 @@ import * as yup from 'yup'
 const RenderForm = ({ errors, touched, isSubmitting }) => (
 
   <Form>
-    <h4 className="text-center my-3">Delivery Address Information</h4>
+    <h4 className="text-center my-3">Delivery Address</h4>
 
     <div className="form-group">
       <label htmlFor="firstName">First Name</label>
@@ -15,6 +15,7 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
         className={`form-control ${(errors.firstName && touched.firstName ? ' is-invalid' : '')}`}
         name="firstName"
         type="text"
+        disabled
       />
       <ErrorMessage component="div" className="invalid-feedback" name="firstName" />
     </div>
@@ -26,6 +27,7 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
         className={`form-control ${(errors.lastName && touched.lastName ? ' is-invalid' : '')}`}
         name="lastName"
         type="text"
+        disabled
       />
       <ErrorMessage component="div" className="invalid-feedback" name="lastName" />
     </div>
@@ -37,6 +39,7 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
         className={`form-control ${(errors.telephone && touched.telephone ? ' is-invalid' : '')}`}
         name="telephone"
         type="text"
+        disabled
       />
       <ErrorMessage component="div" className="invalid-feedback" name="telephone" />
     </div>
@@ -48,26 +51,13 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
         className={`form-control ${(errors.address && touched.address ? ' is-invalid' : '')}`}
         name="address"
         type="text"
-        // component="textarea"
-        // rows="4"
-        // value=""
+        disabled
       />
       <ErrorMessage component="div" className="invalid-feedback" name="address" />
     </div>
 
-    <div className="custom-control custom-checkbox form-group">
-      <Field
-        id="saveAsDefaultAddress"
-        className="custom-control-input"
-        name="saveAsDefaultAddress"
-        type="checkbox"
-      />
-      <label className="custom-control-label" htmlFor="saveAsDefaultAddress">Save as default address</label>
-      <ErrorMessage component="div" className="invalid-feedback" name="saveAsDefaultAddress" />
-    </div>
-
     <div className="text-center">
-      <button className="btn btn-success col-6 ml-3" type="submit" disabled={isSubmitting}>Confirm Checkout</button>
+      <button className="btn btn-success col-6 ml-3" type="submit" disabled={isSubmitting}>Pay Now</button>
     </div>
   </Form>
 
@@ -78,7 +68,7 @@ RenderForm.propTypes = {
   isSubmitting: PropTypes.bool.isRequired
 }
 
-const deliveryDetailsSchema = yup.object().shape({
+const confirmCheckoutSchema = yup.object().shape({
   firstName: yup.string().required('Field is Required'),
   lastName: yup.string().required('Field is Required'),
   telephone: yup.number().required('Field is Required'),
@@ -86,18 +76,18 @@ const deliveryDetailsSchema = yup.object().shape({
   saveAsDefaultAddress: yup.boolean()
 })
 
-const FormsDeliveryDetails = ({ initialValues, onSubmit }) => (
+const FormsConfirmCheckout = ({ initialValues, onSubmit }) => (
   <Formik
     initialValues={initialValues}
-    validationSchema={deliveryDetailsSchema}
+    validationSchema={confirmCheckoutSchema}
     onSubmit={onSubmit}
     component={RenderForm}
     enableReinitialize
   />
 )
-FormsDeliveryDetails.propTypes = {
+FormsConfirmCheckout.propTypes = {
   initialValues: PropTypes.shape().isRequired,
   onSubmit: PropTypes.func.isRequired
 }
 
-export default FormsDeliveryDetails
+export default FormsConfirmCheckout

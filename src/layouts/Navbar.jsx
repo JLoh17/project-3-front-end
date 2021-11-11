@@ -4,6 +4,7 @@ import { withRouter } from 'react-router'
 import { NavLink } from 'react-router-dom'
 import { Navbar, Nav, Form, Button, FormControl, NavDropdown, Badge } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { ToastContainer, toast } from 'react-toastify'
 
 import { authSignup, authLogout } from '@/actions/auth'
 import ModalsRegister from '@/modals/register'
@@ -24,11 +25,19 @@ class LayoutsNavbar extends React.Component {
   }
 
   handleRegisterSubmit(values) {
-    // TODO add .catch to re-enable button if error
-    // TODO toastify?
     this.props.authSignup(values).then(() => {
       this.closeRegisterModal()
     })
+    // .catch(() => {
+    //   methods.setSubmitting(false)
+    //   toast.error('Register fields entered incorrectly, please try again', {
+    //     position: 'top-right',
+    //     autoClose: 5000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     progress: undefined
+    //   })
   }
 
   handleLogoutClick() {
@@ -69,6 +78,7 @@ class LayoutsNavbar extends React.Component {
               <Badge variant="success" className="mx-1"><span /> 9</Badge>
             </Nav.Link>
           </Nav>
+
         </>
       )
     }
@@ -80,6 +90,8 @@ class LayoutsNavbar extends React.Component {
             <span className="fas fa-user-plus me-1" /> Register
           </Nav.Link>
         </Nav>
+        <ToastContainer />
+
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
           <Button variant="outline-success">Search</Button>
