@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -14,14 +15,7 @@ const CartTable = ({ myCartState: { cart, isLoading }, ...props }) => {
     props.getMyCart()
   }, [])
 
-  const [size, setSize] = useState(1)
   const [quantity, setQuantity] = useState(1)
-  const [CartNextStep, setCartNextStep] = useState(null)
-
-  // CartNextStep() => {
-  //   const { history: { push } } = props
-  //   push(`/products?catName=${catId}`)
-  // }
 
   // useEffect is componentDidMount and componentWillUpdate. Keep the [] as that is for componentWillUpdate.
   // Template for useEffect
@@ -54,16 +48,18 @@ const CartTable = ({ myCartState: { cart, isLoading }, ...props }) => {
                 </td>
                 <td>
                   <Form>
-                    <Form.Control as="select" aria-label="quantity" name="quantity">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
+                    <Form.Control as="select" aria-label="quantity" name="quantity" onChange={(e) => setQuantity(e, item.quantity)}>
+                      <option value="Quantity-1">1</option>
+                      <option value="Quantity-2">2</option>
+                      <option value="Quantity-3">3</option>
+                      <option value="Quantity-4">4</option>
+                      <option value="Quantity-5">5</option>
                     </Form.Control>
                   </Form>
                 </td>
-                <td>{item.Product.price} * quantity</td>
+                <td>{(item.Product.price * item.quantity).toLocaleString('en-HK', {
+                  style: 'currency',
+                  currency: 'HKD' })}</td>
                 <td>
                   <div className="fas fa-trash-alt trashBtn"> Remove</div>
                 </td>
@@ -80,10 +76,15 @@ const CartTable = ({ myCartState: { cart, isLoading }, ...props }) => {
               <h4>Total:</h4>
             </td>
             <td>
-              <h4>Quantity * Price</h4>
+              <h4>{cart.reduce((sum, item) => sum + (item.Product.price * item.quantity), 0).toLocaleString('en-HK', {
+                style: 'currency',
+                currency: 'HKD' })}
+              </h4>
             </td>
             <td>
-              <Button variant="success" onClick={() => CartNextStep()}> Next Step </Button>
+              <Link to="/my/orders/new">
+                <Button variant="success"> Next Step </Button>
+              </Link>
             </td>
           </tr>
         </tbody>

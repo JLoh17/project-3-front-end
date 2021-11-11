@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import { connect } from 'react-redux'
-import { ToastContainer, toast } from 'react-toastify'
+// import { ToastContainer, toast } from 'react-toastify'
 
 import FormsConfirmCheckout from '@/forms/confirm-checkout'
 import CompsPaymentSide from '@/components/PaymentSide'
