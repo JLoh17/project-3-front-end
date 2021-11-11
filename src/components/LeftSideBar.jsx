@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Navigation } from 'react-minimal-side-navigation'
 import { withRouter } from 'react-router'
-import { Link } from 'react-router-dom'
 
 const CompsLeftSidebar = (props) => {
   const { history, location } = props
@@ -14,12 +13,9 @@ const CompsLeftSidebar = (props) => {
           Categories
         </h4>
       </div>
-      {/* <div><Link to="/products?catName=1">{'Men\'s Tops'}</Link></div>
-      <div><Link to="/products?catName=2">{'Men\'s Shoes'}</Link></div>
-      <div><Link to="/products?catName=3">{'Men\'s Hats'}</Link></div> */}
 
       <Navigation
-        activeItemId={location.pathname}
+        activeItemId={`${location.pathname}${location.search}`}
         onSelect={({ itemId }) => {
           history.push(itemId)
         }}
@@ -27,7 +23,6 @@ const CompsLeftSidebar = (props) => {
           {
             title: 'All Categories',
             itemId: '/products'
-
           },
           {
             title: 'Men\'s Tops',
@@ -53,7 +48,6 @@ const CompsLeftSidebar = (props) => {
 CompsLeftSidebar.propTypes = {
   history: PropTypes.shape().isRequired,
   location: PropTypes.shape().isRequired
-
 }
 
 export default withRouter(CompsLeftSidebar)

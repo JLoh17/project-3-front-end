@@ -34,29 +34,27 @@ class PagesHome extends React.Component {
 
   render() {
     return (
-      <>
-        <div id="pages-home" className="container-fluid m-1">
-          <header className="text-center border-bottom my-3">
-            <h1>FROM HEAD TO TOE</h1>
-            <h3>Men&apos;s Fashion</h3>
-          </header>
+      <div id="pages-home" className="container-fluid m-1">
+        <header className="text-center border-bottom my-3">
+          <h1>FROM HEAD TO TOE</h1>
+          <h3>Men&apos;s Fashion</h3>
+        </header>
 
-          <div className="d-flex justify-content-around my-3">
-            <CardGroup>
-              {
-                categories.map((cat) => (
-                  <Card key={cat.id} onClick={() => this.getCategoryByFilter(cat.id)}>
-                    <Button variant="light" className="button shadow-none">
-                      <Card.Img variant="top" className="cardImage" src={cat.src} />
-                      <Card.Title className="text text-white">{cat.name}</Card.Title>
-                    </Button>
-                  </Card>
-                ))
-              }
-            </CardGroup>
-          </div>
+        <div className="d-flex justify-content-around my-3">
+          <CardGroup>
+            {
+              categories.map((cat) => (
+                <Card key={cat.id} onClick={() => this.getCategoryByFilter(cat.id)}>
+                  <Button variant="light" className="button shadow-none">
+                    <Card.Img variant="top" className="cardImage" src={cat.src} />
+                    <Card.Title className="text text-white">{cat.name}</Card.Title>
+                  </Button>
+                </Card>
+              ))
+            }
+          </CardGroup>
         </div>
-      </>
+      </div>
     )
   }
 }

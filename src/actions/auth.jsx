@@ -6,7 +6,8 @@ export const authSignup = (values) => (dispatch) => new Promise((resolve, reject
   axios({
     method: 'POST',
     url: `${process.env.API_DOMAIN}/api/auth/signup`,
-    data: values
+    data: values,
+    withCredentials: true
   }).then((resp) => {
     dispatch(setCurrentUser(resp.data))
     resolve(resp)

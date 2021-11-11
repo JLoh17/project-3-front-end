@@ -32,7 +32,7 @@ const MyOrdersNew = ({ currentUser, myCartState: { cart }, ...props }) => {
   }
 
   return (
-    <div id="orders-new" className="container">
+    <div id="pages-orders-new" className="container my-3">
       <header className="text-center border-bottom">
         <h1>DELIVERY DETAILS</h1>
       </header>
@@ -40,7 +40,7 @@ const MyOrdersNew = ({ currentUser, myCartState: { cart }, ...props }) => {
         <div className="col-12 col-lg-6">
           <FormsDeliveryDetails
             // initialValues currentUser is given from mapStateToProps or set null
-            initialValues={currentUser || {}}
+            initialValues={currentUser}
             onSubmit={handleCreateNewOrder}
           />
         </div>

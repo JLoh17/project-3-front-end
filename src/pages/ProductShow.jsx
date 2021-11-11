@@ -29,20 +29,22 @@ const ProductShow = (props) => {
   if (!product) return null
 
   return (
-    <div className="container d-flex justify-content-between ml-0">
-      <CompsLeftSidebar />
-      <div id="product-show" className="container my-3">
-        <header className="text-center border-bottom">
-          <h3 className="category-title">{product.Category.catName}</h3>
-          <div><Link to={`/products?catName=${product.Category.id}`}>Back to {product.Category.catName}</Link></div>
-        </header>
-        <div className="d-flex justify-content-center">
-          <div className="row">
-            <CompCarousel images={product.Images} />
-          </div>
-          <div className="row">
-            <CompProductSelector product={product} currentUser={currentUser} />
+    <div id="pages-product-show" className="container-fluid my-3">
+      <header className="text-center border-bottom">
+        <h3 className="category-title">{product.Category.catName}</h3>
+        <div><Link to={`/products?catName=${product.Category.id}`}>Back to {product.Category.catName}</Link></div>
+      </header>
 
+      <div className="d-flex">
+        <CompsLeftSidebar />
+        <div id="product-show" className="container my-3">
+          <div className="d-flex justify-content-center">
+            <div className="row">
+              <CompCarousel images={product.Images} />
+            </div>
+            <div className="row">
+              <CompProductSelector product={product} currentUser={currentUser} />
+            </div>
           </div>
         </div>
       </div>

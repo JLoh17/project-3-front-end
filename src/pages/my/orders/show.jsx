@@ -37,7 +37,7 @@ const MyOrdersShow = ({ orderStatus: { orderDetails }, currentUser, match, ...pr
 
   if (orderDetails.status === 'Pending-Payment') {
     return (
-      <div id="orders-show" className="container">
+      <div id="pages-orders-show" className="container my-3">
         <header className="text-center border-bottom">
           <h1>PAYMENT</h1>
         </header>
@@ -57,9 +57,9 @@ const MyOrdersShow = ({ orderStatus: { orderDetails }, currentUser, match, ...pr
     )
   }
 
-  if (orderDetails.status === 'Pending-Delivery') {
+  if (orderDetails.status === 'Pending-Delivery' || orderDetails.status === 'Delivered') {
     return (
-      <div id="orders-pending-delivery" className="container">
+      <div id="pages-orders-show" className="container my-3">
         <header className="text-center border-bottom">
           <h1>ORDER {orderDetails.id}</h1>
         </header>
@@ -79,24 +79,7 @@ const MyOrdersShow = ({ orderStatus: { orderDetails }, currentUser, match, ...pr
   }
 
   return (
-    <div id="orders-new" className="container">
-      {/* <header className="text-center border-bottom">
-        <h1>CHECKOUT</h1>
-        <h1>ORDER #_________</h1>
-      </header>
-      <div className="row">
-        <div className="col-12 col-lg-6">
-          <FormsConfirmCheckout
-            initialValues={orderDetails || {}}
-            onSubmit={handlePayNow}
-          />
-        </div>
-        <div className="col-12 col-lg-6">
-          <CompsPaymentSide />
-        </div>
-        <ToastContainer />
-      </div> */}
-    </div>
+    <div id="pages-orders-show" className="container my-3">should never see this section</div>
   )
 }
 

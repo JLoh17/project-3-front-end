@@ -1,5 +1,4 @@
 import React from 'react'
-import qs from 'query-string'
 import PropTypes from 'prop-types'
 import Card from 'react-bootstrap/Card'
 import { connect } from 'react-redux'
@@ -21,13 +20,12 @@ class ProductIndex extends React.Component {
 
     this.state = {
       page: 1,
-      q: '',
       sort: 'createdAt',
       category: queries.get('catName') || ''
     }
 
-    this.getFilteredProductsPrevious = this.getFilteredProductsPrevious.bind(this)
-    this.getFilteredProductsNext = this.getFilteredProductsNext.bind(this)
+    this.getFiltered = this.getFiltered.bind(this)
+    this.getFilteredPage = this.getFilteredPage.bind(this)
     this.productShow = this.productShow.bind(this)
   }
 
@@ -35,17 +33,22 @@ class ProductIndex extends React.Component {
     this.props.getProductList(this.state)
   }
 
-  getFilteredCategory(newCategory) {
-    this.props.getProductList(this.state)
-    this.setState({ category: newCategory })
+  componentDidUpdate(prevProps) {
+    const oldQueries = new URLSearchParams(prevProps.location.search)
+    const newQueries = new URLSearchParams(this.props.location.search)
+    if (oldQueries.get('catName') !== newQueries.get('catName')) {
+      this.getFiltered()
+    }
   }
 
-  getFilteredProductsNext(newPage) {
-    this.props.getProductList({ ...this.state, page: newPage })
-    this.setState({ page: newPage })
+  getFiltered() {
+    const queries = new URLSearchParams(this.props.location.search)
+    const newFilter = { ...this.state, category: queries.get('catName'), page: 1 }
+    this.props.getProductList(newFilter)
+    this.setState(newFilter)
   }
 
-  getFilteredProductsPrevious(newPage) {
+  getFilteredPage(newPage) {
     this.props.getProductList({ ...this.state, page: newPage })
     this.setState({ page: newPage })
   }
@@ -56,7 +59,7 @@ class ProductIndex extends React.Component {
   }
 
   renderIndex() {
-    const { productIndex: { list, meta, isLoading }, history: { push } } = this.props
+    const { productIndex: { list, meta, isLoading } } = this.props
     const { page } = this.state
 
     if (isLoading) {
@@ -79,7 +82,7 @@ class ProductIndex extends React.Component {
     }
 
     return (
-      <>
+      <div id="product-index-right" className="col-9">
         <div className="row mb-3">
           {
             list.map((product) => (
@@ -103,13 +106,13 @@ class ProductIndex extends React.Component {
 
         <div className="d-flex justify-content-center">
           {
-            page > 1 && <button type="button" className="btn btn-info btn-spacing" onClick={() => this.getFilteredProductsPrevious(page - 1)}>Previous</button>
+            page > 1 && <button type="button" className="btn btn-info btn-spacing" onClick={() => this.getFilteredPage(page - 1)}>Previous</button>
           }
           {
-            page < meta?.totalPages && <button type="button" className="btn btn-info" onClick={() => this.getFilteredProductsNext(page + 1)}>Next</button>
+            page < meta?.totalPages && <button type="button" className="btn btn-info" onClick={() => this.getFilteredPage(page + 1)}>Next</button>
           }
         </div>
-      </>
+      </div>
     )
   }
 
@@ -117,13 +120,13 @@ class ProductIndex extends React.Component {
     const { productIndex: { meta } } = this.props
 
     return (
-      <div className="container d-flex justify-content-between ml-0">
-        <CompsLeftSidebar />
+      <div id="pages-product-index" className="container-fluid my-3">
+        <header className="text-center mb-3">
+          <h1 className="category-title">{meta?.catName || 'Products'}</h1>
+        </header>
 
-        <div id="product-index" className="container">
-          <header className="text-center mb-3">
-            <h1 className="category-title">{meta?.catName || 'Products'}</h1>
-          </header>
+        <div className="d-flex">
+          <CompsLeftSidebar />
           { this.renderIndex()}
         </div>
       </div>
@@ -133,7 +136,7 @@ class ProductIndex extends React.Component {
 
 ProductIndex.propTypes = {
   getProductList: PropTypes.func.isRequired,
-  productIndex: PropTypes.func.isRequired,
+  productIndex: PropTypes.shape().isRequired,
   history: PropTypes.shape().isRequired,
   location: PropTypes.shape().isRequired
 }

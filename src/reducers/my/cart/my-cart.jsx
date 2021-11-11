@@ -2,6 +2,7 @@ import produce from 'immer'
 
 import {
   SET_MY_CART,
+  UNSET_MY_CART,
   GET_MY_CART,
   EDIT_CART_QUANTITY,
   UPDATE_CART_QUANTITY,
@@ -24,6 +25,11 @@ export default (state = initialState, action) => {
     case SET_MY_CART: {
       return produce(state, (draft) => {
         draft.cart = action.payload.cart
+      })
+    }
+    case UNSET_MY_CART: {
+      return produce(state, (draft) => {
+        draft.cart = []
       })
     }
     case GET_MY_CART: {
@@ -54,8 +60,8 @@ export default (state = initialState, action) => {
     }
     case REMOVE_CART_ITEM: {
       return produce(state, (draft) => {
-        const index = draft.cart.findIndex((cart) => cart.id === action.payload.cart.id)
-        if (index !== -1) draft.cart[index].splice(index, 1)
+        const index = draft.cart.findIndex((cart) => cart.id === action.payload)
+        if (index !== -1) draft.cart.splice(index, 1)
       })
     }
     case DESTROY_CART_ITEM: {

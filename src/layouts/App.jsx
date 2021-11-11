@@ -8,6 +8,7 @@ import { getMyProfile } from '@/actions/my/profile'
 
 // import Breadcrumb from '@/components/Breadcrumb'
 import PrivateRoute from '@/components/PrivateRoute'
+import AdminPrivateRoute from '@/components/AdminPrivateRoute'
 import CompLoading from '@/components/Loading'
 // import CompsLeftSidebar from '@/components/LeftSideBar'
 import Footer from '@/components/Footer'
@@ -44,9 +45,7 @@ const App = (props) => {
         loaded ? (
           <>
             <LayoutsNavbar />
-            {/* <Breadcrumb /> */}
-            <div className="d-flex justify-content-around">
-              {/* <CompsLeftSidebar /> */}
+            <div id="body-content" className="d-flex justify-content-around">
               <Switch>
                 <Route exact path="/" component={PagesHome} />
 
@@ -60,13 +59,12 @@ const App = (props) => {
                 <PrivateRoute exact path="/my/orders/new" component={MyOrdersNew} />
                 <PrivateRoute exact path="/my/orders/:id" component={MyOrdersShow} />
 
-                <PrivateRoute exact path="/admin/orders" component={AdminOrders} />
+                <AdminPrivateRoute exact path="/admin/orders" component={AdminOrders} />
 
                 <Route component={PagesNotFound} />
               </Switch>
             </div>
             <Footer />
-
           </>
         ) : (
           <div className="container my-3">

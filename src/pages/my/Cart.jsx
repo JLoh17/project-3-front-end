@@ -12,20 +12,20 @@ const MyCart = ({ myCartState: { cart }, ...props }) => {
   }, [])
 
   return (
-    <div id="my-cart" className="container">
+    <div id="pages-my-cart" className="container my-3">
       <header className="text-center border-bottom">
         <h1>My Cart</h1>
       </header>
 
       {
-      (cart.length === 0) ? (
-        <div className="my-3 text-center">
-          <div> Your shopping cart is currently empty.</div>
-          <div> <Link to="/products"> View Products </Link></div>
-        </div>
-      ) : (
-        <CartTable />
-      )
+        (cart.length === 0) ? (
+          <div className="my-3 text-center">
+            <div> Your shopping cart is currently empty.</div>
+            <div> <Link to="/products"> View Products </Link></div>
+          </div>
+        ) : (
+          <CartTable />
+        )
       }
     </div>
   )

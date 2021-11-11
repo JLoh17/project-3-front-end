@@ -53,7 +53,7 @@ const CompProductSelector = ({ product, currentUser, ...props }) => {
             placement="right"
             show={popoverShow}
             overlay={(
-              <Popover id="popover-basic" {...props}>
+              <Popover id="popover-basic">
                 <Popover.Title
                   as="h3"
                   style={{

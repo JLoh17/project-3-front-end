@@ -4,6 +4,8 @@ import { loading } from '@/actions/loading'
 
 export const SET_MY_CART = 'SET_MY_CART'
 export const setMyCart = (payload) => ({ type: SET_MY_CART, payload })
+export const UNSET_MY_CART = 'UNSET_MY_CART'
+export const unsetMyCart = () => ({ type: UNSET_MY_CART })
 
 // Need to do get to set loading, then dispatch the data in setMyCart to store data in the reducer, then dispatch to unset the loading as false
 // Connect in pages is needed for dispatch to work
