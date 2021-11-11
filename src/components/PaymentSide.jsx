@@ -1,13 +1,25 @@
 import React, { useEffect } from 'react'
+import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import CompLoading from '@/components/Loading'
 
-import { getMyCart } from '@/actions/my/cart/index'
+import { getMyOrdersShow } from '@/actions/my/orders/show'
 
-const CompsCheckoutSide = ({ myCartState: { cart, isLoading }, ...props }) => {
+const CompPaymentSide = ({ myOrderState: { orderDetails, isLoading }, match, ...props }) => {
+  // FOR REFERENCE ONLY - way to get order without using redux/context
+  // const [order, setOrder] = useState(null)
+  // useEffect(() => {
+  //   axios({
+  //     method: 'get',
+  //     url: `http://localhost:3000/api/my/orders/${match.params.id}`
+  //   }).then((resp) => {
+  //     setOrder(resp.data.order)
+  //   })
+  // }, [])
+
   useEffect(() => {
-    props.getMyCart()
+    props.getMyOrdersShow(match.params.id)
   }, [])
 
   if (isLoading) {
@@ -17,10 +29,10 @@ const CompsCheckoutSide = ({ myCartState: { cart, isLoading }, ...props }) => {
       </div>
     )
   }
-  if (cart.length === 0) return <div>No item in cart</div>
+  if (!orderDetails) return <div>There is no such order</div>
   return (
     <div id="comps-checkout-side">
-      <h4 className="text-center my-3">Your Cart</h4>
+      <h4 className="text-center my-3">Your Order</h4>
       <table className="table table-sm table-bordered">
         <thead>
           <tr>
@@ -34,7 +46,7 @@ const CompsCheckoutSide = ({ myCartState: { cart, isLoading }, ...props }) => {
 
         <tbody>
           {
-            cart.map((item, i) => (
+            orderDetails.OrderProducts.map((item, i) => (
               <tr key={item.id}>
                 <td>{i + 1}</td>
                 <td>{item.Product.productName}</td>
@@ -49,23 +61,24 @@ const CompsCheckoutSide = ({ myCartState: { cart, isLoading }, ...props }) => {
       <div className="d-flex justify-content-end p-2">
         <h4><b> Total:</b></h4>
         <span>&nbsp;</span>
-        <span><h4><b>$ {cart.reduce((sum, item) => sum + (item.Product.price * item.quantity), 0)}</b></h4></span>
+        <span><h4><b>$ {orderDetails.OrderProducts.reduce((sum, item) => sum + (item.Product.price * item.quantity), 0)}</b></h4></span>
       </div>
     </div>
   )
 }
 
-CompsCheckoutSide.propTypes = {
-  myCartState: PropTypes.shape().isRequired,
-  getMyCart: PropTypes.func.isRequired
+CompPaymentSide.propTypes = {
+  myOrderState: PropTypes.shape().isRequired,
+  match: PropTypes.shape().isRequired,
+  getMyOrdersShow: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
-  myCartState: state.myCart
+  myOrderState: state.orderShow
 })
 
 const mapDispatchToProps = {
-  getMyCart
+  getMyOrdersShow
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CompsCheckoutSide)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(CompPaymentSide))

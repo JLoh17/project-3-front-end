@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -6,6 +6,8 @@ import { connect } from 'react-redux'
 import { getMyProfile } from '@/actions/my/profile'
 
 import Breadcrumb from '@/components/Breadcrumb'
+import PrivateRoute from '@/components/PrivateRoute'
+
 import LayoutsNavbar from '@/layouts/Navbar'
 
 import PagesHome from '@/pages/Home'
@@ -25,32 +27,43 @@ import AdminOrders from '@/pages/admin/orders'
 import PagesNotFound from '@/pages/NotFound'
 
 const App = (props) => {
+  const [loaded, setLoaded] = useState(false)
   useEffect(() => {
-    props.getMyProfile()
+    props.getMyProfile().finally(() => {
+      setLoaded(true)
+    })
   }, [])
 
   return (
     <Router>
-      <LayoutsNavbar />
-      <Breadcrumb />
+      {
+        loaded ? (
+          <>
+            <LayoutsNavbar />
+            <Breadcrumb />
 
-      <Switch>
-        <Route exact path="/" component={PagesHome} />
+            <Switch>
+              <Route exact path="/" component={PagesHome} />
 
-        <Route exact path="/products" component={ProductIndex} />
-        <Route exact path="/products/:id" component={ProductShow} />
+              <Route exact path="/products" component={ProductIndex} />
+              <Route exact path="/products/:id" component={ProductShow} />
 
-        <Route exact path="/my/cart" component={MyCart} />
-        <Route exact path="/my/profile" component={MyProfile} />
+              <PrivateRoute exact path="/my/cart" component={MyCart} />
+              <PrivateRoute exact path="/my/profile" component={MyProfile} />
 
-        <Route exact path="/my/orders" component={MyOrdersIndex} />
-        <Route exact path="/my/orders/new" component={MyOrdersNew} />
-        <Route exact path="/my/orders/:id" component={MyOrdersShow} />
+              <PrivateRoute exact path="/my/orders" component={MyOrdersIndex} />
+              <PrivateRoute exact path="/my/orders/new" component={MyOrdersNew} />
+              <PrivateRoute exact path="/my/orders/:id" component={MyOrdersShow} />
 
-        <Route exact path="/admin/orders" component={AdminOrders} />
+              <PrivateRoute exact path="/admin/orders" component={AdminOrders} />
 
-        <Route component={PagesNotFound} />
-      </Switch>
+              <Route component={PagesNotFound} />
+            </Switch>
+          </>
+        ) : (
+          <div>Loading</div>
+        )
+      }
     </Router>
   )
 }
