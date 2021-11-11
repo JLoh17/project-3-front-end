@@ -16,7 +16,7 @@ const MyOrdersNew = ({ currentUser, ...props }) => {
       push(`/my/orders/${resp.data.order.id}`)
     }).catch(() => {
       methods.setSubmitting(false)
-      toast.error('Error to submit, please try again', {
+      toast.error('Unable to submit, please refresh and try again', {
         position: 'bottom-right',
         autoClose: 5000,
         hideProgressBar: false,
