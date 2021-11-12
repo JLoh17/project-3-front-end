@@ -21,7 +21,7 @@ const CompsCarousel = ({ images }) => {
   }
 
   return (
-    <div id="comps-carousel" className="productCarouselSelected mb-5">
+    <div id="comps-carousel" className="productCarouselSelected mr-5 mb-5">
       <Slider {...settings}>
         {
           images.map((image) => (
