@@ -9,6 +9,7 @@ import { authSignup, authLogout } from '@/actions/auth'
 import ModalsRegister from '@/modals/register'
 import LoginPopover from '@/components/LoginPopover'
 import CartBadge from '@/components/CartBadge'
+import logo from '@/assets/logo.png'
 
 class LayoutsNavbar extends React.Component {
   constructor(props) {
@@ -106,7 +107,7 @@ class LayoutsNavbar extends React.Component {
     return (
       <>
         <Navbar id="navbar" bg="light" expand="lg">
-          <Navbar.Brand as={NavLink} to="/"><img src="/assets/logo.png" /></Navbar.Brand>
+          <Navbar.Brand as={NavLink} to="/"><img src={logo} /></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
           <Navbar.Collapse id="basic-navbar-nav">
