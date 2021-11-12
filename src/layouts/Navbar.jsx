@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router'
 import { NavLink } from 'react-router-dom'
-import { Navbar, Nav, Form, Button, FormControl, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 import { authSignup, authLogout } from '@/actions/auth'
@@ -89,11 +89,6 @@ class LayoutsNavbar extends React.Component {
             <span className="fas fa-user-plus me-1" /> Register
           </Nav.Link>
         </Nav>
-
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-success">Search</Button>
-        </Form>
         <Nav>
           <LoginPopover>
             <Nav.Link eventKey="2">
