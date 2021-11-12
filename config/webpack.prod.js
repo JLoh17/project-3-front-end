@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
@@ -29,8 +30,20 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
+          'resolve-url-loader',
           'postcss-loader',
           'sass-loader'
+        ]
+      }, {
+        test: /\.(woff(2)?|ttf|eot|png|jpg|svg|gif)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
         ]
       }
     ]
@@ -54,6 +67,9 @@ module.exports = {
     }
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.API_DOMAIN': JSON.stringify('https://fth-back.herokuapp.com')
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/template.html'),
       filename: 'index.html'

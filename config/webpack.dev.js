@@ -31,13 +31,29 @@ module.exports = {
         use: [
           'style-loader',
           'css-loader',
+          'resolve-url-loader',
           'postcss-loader',
           'sass-loader'
+        ]
+      }, {
+        test: /\.(woff(2)?|ttf|eot|png|jpg|svg|gif)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
         ]
       }
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.API_DOMAIN': JSON.stringify('http://localhost:3000')
+      // 'process.env.PUBLIC_URL': JSON.stringify('http://localhost:8080')
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/template.html'),

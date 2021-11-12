@@ -1,1 +1,25 @@
 @import "~bootstrap/scss/bootstrap";
+@import '~slick-carousel/slick/slick';
+@import '~slick-carousel/slick/slick-theme';
+@import '~react-loading-skeleton/dist/skeleton';
+@import '~react-toastify/dist/ReactToastify';
+@import '~react-minimal-side-navigation/lib/ReactMinimalSideNavigation';
+
+@import "./pages/Home.scss";
+@import "./pages/ProductIndex.scss";
+@import "./pages/ProductShow.scss";
+@import "./pages/MyOrdersIndex.scss";
+@import "./pages/AdminOrders.scss";
+
+@import "./components/Carousel.scss";
+@import "./components/Footer.scss";
+@import "./components/SearchSort.scss";
+@import "./components/MyCartTable.scss";
+@import "./components/Navbar.scss";
+
+@import "./utilities.scss";
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam&family=Overlock:wght@900&family=Raleway:wght@400;600&family=Roboto+Slab&display=swap');
+
+#body-content {
+  min-height: calc(100vh - 56px);
+}

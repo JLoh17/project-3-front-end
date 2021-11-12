@@ -1,0 +1,33 @@
+#pages-my-order-index {
+
+  table td {
+    vertical-align: middle;
+  }
+
+  tr>th {
+    border: none;
+    font-size: larger;
+  }
+
+  tr>td {
+    border-top: 2px solid lightgray;
+  }
+
+  .fa-trash-alt {
+    color: red;
+  }
+
+  .fa-trash-alt:hover,
+  .fa-clone:hover,
+  .cursor-icon:hover {
+    cursor: pointer;
+  }
+
+
+
+
+
+  .fa-clone {
+    padding-left: 10px;
+  }
+}

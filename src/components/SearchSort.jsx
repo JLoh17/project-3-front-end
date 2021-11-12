@@ -1,0 +1,49 @@
+import React from 'react'
+import Form from 'react-bootstrap/Form'
+
+import Container from 'react-bootstrap/Container'
+
+class SearchSort extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+    }
+  }
+
+  render() {
+    return (
+      <Container id="SearchSort" className="my-5">
+        <Form inline className="justify-content-end">
+          <h4>Filter by status:</h4>
+          <Form.Control as="select" className="btn-spacing">
+            <option defaultChecked>All</option>
+            <option>Delivered</option>
+            <option>Pending Delivery</option>
+            <option>Pending Payment</option>
+          </Form.Control>
+        </Form>
+
+      </Container>
+
+    // <div id="SearchSort" className="d-flex justify-content-between my-5">
+    //   <Form inline>
+    //     <h4>Search:</h4>
+    //     <Form.Control type="text" placeholder="Search" className="btn-spacing" />
+    //     <Button variant="outline-success" className="btn-spacing">Search</Button>
+    //   </Form>
+    //   <Form inline>
+    //     <h4>Filter by status:</h4>
+    //     <Form.Control as="select" className="btn-spacing">
+    //       <option defaultChecked>All</option>
+    //       <option>Delivered</option>
+    //       <option>Pending Delivery</option>
+    //       <option>Pending Payment</option>
+    //     </Form.Control>
+    //   </Form>
+    // </div>
+    )
+  }
+}
+
+export default SearchSort

@@ -1,0 +1,31 @@
+.footer-design {
+  background-color: lightgray;
+  padding: 2vh 2vh 2vh 2vh;
+  font-family: 'Roboto Slab', sans-serif;
+
+}
+
+.button {
+  padding: 0;
+  border: none;
+  background: none;
+  position: relative;
+}
+
+.button .text {
+  font-size: 45px;
+  text-shadow: 2px 2px black;
+  white-space: nowrap; // prevents the text from wrapping
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#logo {
+  font-size: 32px;
+}
+
+.fa-instagram-square {
+  margin-left: 10px;
+}

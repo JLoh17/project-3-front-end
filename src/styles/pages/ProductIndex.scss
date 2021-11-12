@@ -1,0 +1,26 @@
+// this bounds these styles to the pages-home component
+#pages-product-index {
+  .category-title {
+    font-family: 'Raleway', sans-serif;
+  }
+
+  #product-index-right {
+    .card-title {
+      font-family: 'Roboto Slab', sans-serif;
+    }
+
+    .card-img-top {
+      width: 100%;
+      height: 30vh;
+      object-fit: cover;
+    }
+
+    .card:hover {
+      cursor: pointer;
+    }
+
+    .btn-spacing {
+      margin-right: 2vw;
+    }
+  }
+}

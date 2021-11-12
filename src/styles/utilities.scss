@@ -1,0 +1,21 @@
+.click-disabled {
+  pointer-events: none;
+}
+
+.click-auto {
+  pointer-events: auto;
+}
+
+.fa-trash-alt {
+  color: red;
+}
+
+.fa-trash-alt:hover,
+.fa-clone:hover {
+  cursor: pointer;
+}
+
+.cursor-icon:hover {
+  cursor: pointer;
+  background-color: rgba(248, 242, 242, 0.849);
+}
