@@ -106,7 +106,7 @@ class LayoutsNavbar extends React.Component {
     return (
       <>
         <Navbar id="navbar" bg="light" expand="lg">
-          <Navbar.Brand as={NavLink} to="/"><img src="/assets/logo" /></Navbar.Brand>
+          <Navbar.Brand as={NavLink} to="/"><img src="/assets/logo.png" /></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
           <Navbar.Collapse id="basic-navbar-nav">
