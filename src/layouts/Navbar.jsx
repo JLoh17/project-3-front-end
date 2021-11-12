@@ -59,6 +59,21 @@ class LayoutsNavbar extends React.Component {
   renderCollapse() {
     const { currentUserState: { currentUser } } = this.props
 
+    if (currentUser && currentUser.isAdmin) {
+      return (
+        <>
+          <Nav className="ml-auto">
+            <NavDropdown alignRight title={<span><i className="fas fa-user-check" /> My Profile</span>}>
+              <NavDropdown.Item as={NavLink} to="/admin/orders">Admin Orders</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item onClick={this.handleLogoutClick} eventKey="4">Logout</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+
+        </>
+      )
+    }
+
     if (currentUser) {
       return (
         <>
