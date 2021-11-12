@@ -80,8 +80,8 @@ class AdminOrders extends React.Component {
                       value="Delivered"
                     >Delivered</option>
                     <option
-                      value="Cancel Order"
-                    >Cancel</option>
+                      value="Cancelled-Order"
+                    >Cancel Order</option>
                   </Form.Control>
                 </td>
               </tr>

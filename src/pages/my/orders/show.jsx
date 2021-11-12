@@ -10,6 +10,7 @@ import CompsPaymentSide from '@/components/PaymentSide'
 
 import { payMyOrder } from '@/actions/my/orders/pay'
 import { getMyOrdersShow } from '@/actions/my/orders/show'
+import orderIndex from '@/reducers/my/orders/order-index'
 
 const MyOrdersShow = ({ orderStatus: { orderDetails }, currentUser, match, ...props }) => {
   useEffect(() => {
@@ -57,7 +58,7 @@ const MyOrdersShow = ({ orderStatus: { orderDetails }, currentUser, match, ...pr
     )
   }
 
-  if (orderDetails.status === 'Pending-Delivery' || orderDetails.status === 'Delivered') {
+  if (orderDetails.status === 'Pending-Delivery' || orderDetails.status === 'Delivered' || orderDetails.status === 'Cancelled-Order') {
     return (
       <div id="pages-orders-show" className="container my-3">
         <header className="text-center border-bottom">
