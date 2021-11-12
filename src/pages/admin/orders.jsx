@@ -79,6 +79,9 @@ class AdminOrders extends React.Component {
                     <option
                       value="Delivered"
                     >Delivered</option>
+                    <option
+                      value="Cancel"
+                    >Cancel</option>
                   </Form.Control>
                 </td>
               </tr>
