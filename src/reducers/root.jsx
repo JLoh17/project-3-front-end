@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
 
+// this is a variable name, not linked to anything
 import ReducersCurrentUser from '@/reducers/my/current-user'
 import ReducersProductIndex from '@/reducers/product/product-index'
 import ReducersProductShow from '@/reducers/product/product-show'
